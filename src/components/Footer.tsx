@@ -1,5 +1,6 @@
 import { Box, Button, Container, Heading, VStack, Icon, Image, Flex, Grid, GridItem, Text } from "@chakra-ui/react";
 import logo from "../images/aws_smile-header-desktop-en-white_59x35@2x.png";
+import { QuestionOutlineIcon } from "@chakra-ui/icons";
 
 function Footer() {
   return (
@@ -131,12 +132,12 @@ function Footer() {
                 Create an AWS Account
               </Button>
               <Flex mt={6} gridGap={4}>
-                <Icon as={logo} />
-                <Icon as={logo} />
-                <Icon as={logo} />
-                <Icon as={logo} />
-                <Icon as={logo} />
-                <Icon as={logo} />
+                <QuestionOutlineIcon />
+                <QuestionOutlineIcon />
+                <QuestionOutlineIcon />
+                <QuestionOutlineIcon />
+                <QuestionOutlineIcon />
+                <QuestionOutlineIcon />
               </Flex>
               <Text fontSize="sm" fontWeight="medium" mt={8}>
                 Amazon is an Equal Opportunity Employer:{" "}
