@@ -1,5 +1,4 @@
 import { Box, Button, Container, Heading, VStack, Icon, Image, Flex, Grid, GridItem, Text } from "@chakra-ui/react";
-import logo from "../images/aws_smile-header-desktop-en-white_59x35@2x.png";
 import { QuestionOutlineIcon } from "@chakra-ui/icons";
 
 function Footer() {
