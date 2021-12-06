@@ -1,5 +1,6 @@
 import { Children, useState } from "react";
 import Header from "./Header";
+import Footer from "./Footer";
 import { Box, Container, Grid, GridItem, Text } from "@chakra-ui/react";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
@@ -9,6 +10,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
     <Box background="#232f3e" minHeight="100vh">
       <Header />
       {children}
+      <Footer />
     </Box>
   );
 };
