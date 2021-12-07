@@ -18,7 +18,7 @@ function App() {
 
     const fetchData = async () => {
       try {
-        const response = await fetch(url, { mode: "no-cors" });
+        const response = await fetch(url, { mode: "no-cors", method: "GET", credentials: "include" });
         const json = await response.json();
         console.log(json);
         setData(json);
