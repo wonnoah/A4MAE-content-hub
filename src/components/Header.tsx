@@ -11,11 +11,11 @@ function Header() {
           <GridItem colSpan={1} p={[3, 4]}>
             <Image src={logo} alt="AWS Logo" width={["50px", "100%"]} />
           </GridItem>
-          <GridItem display={["flex", "none"]} justifyContent="right" alignItems="center" gridGap={4}>
+          <GridItem display={["flex", "flex", "none"]} justifyContent="right" alignItems="center" gridGap={4}>
             <Search2Icon color="white" w={7} h={7} />
             <HamburgerIcon color="white" w={7} h={7} />
           </GridItem>
-          <GridItem display={["none", "flex"]} colStart={3} flexDirection="column" justifyContent="center">
+          <GridItem display={["none", "none", "flex"]} colStart={3} flexDirection="column" justifyContent="center">
             <Flex gridGap={4} justifyContent="end" alignItems="center">
               <Text fontSize="sm" whiteSpace="nowrap" color="white">
                 Contact Us
@@ -38,7 +38,7 @@ function Header() {
             </Flex>
           </GridItem>
         </Grid>
-        <Flex display={["none", "flex"]} gridGap={5} justifyContent="start" alignItems="center" p={2} pl={4} pt={0} pb={3}>
+        <Flex display={["none", "none", "flex"]} gridGap={5} justifyContent="start" alignItems="center" p={2} pl={4} pt={0} pb={3}>
           <Text color="white" whiteSpace="nowrap">
             Products
           </Text>
