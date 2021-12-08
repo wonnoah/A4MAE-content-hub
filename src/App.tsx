@@ -14,11 +14,13 @@ function App() {
 
   useEffect(() => {
     const url =
-      "https://thingproxy.freeboard.io/fetch/https://aws.amazon.com/api/dirs/items/search?item.directoryId=media-resources&sort_by=item.dateCreated&sort_order=desc&size=12&item.locale=en_US";
+      "https://powerful-bastion-47434.herokuapp.com/https://aws.amazon.com/api/dirs/items/search?item.directoryId=media-resources&sort_by=item.dateCreated&sort_order=desc&size=12&item.locale=en_US";
+    // const url =
+    //   "https://thingproxy.freeboard.io/fetch/https://aws.amazon.com/api/dirs/items/search?item.directoryId=media-resources&sort_by=item.dateCreated&sort_order=desc&size=12&item.locale=en_US";
 
     const fetchData = async () => {
       try {
-        const response = await fetch(url, { credentials: "omit" });
+        const response = await fetch(url);
         const json = await response.json();
         console.log(json);
         setData(json);
