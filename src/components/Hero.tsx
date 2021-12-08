@@ -5,14 +5,14 @@ import { GoChevronRight } from "react-icons/go";
 const Hero = () => {
   return (
     <Box>
-      <Grid templateColumns="2fr 1fr">
+      <Grid display={["block", "grid"]} templateColumns="2fr 1fr">
         <GridItem
           rowSpan={2}
           background="gray.800"
           backgroundImage="https://images.unsplash.com/photo-1507874457470-272b3c8d8ee2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80"
           backgroundPosition="center"
           minHeight="400px"
-          p={20}
+          p={[6, 20]}
         >
           <Container>
             <Box>
@@ -31,7 +31,7 @@ const Hero = () => {
           bg="gray.600"
           backgroundImage="https://images.unsplash.com/photo-1507874457470-272b3c8d8ee2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80"
           backgroundPosition="center"
-          p={4}
+          p={8}
         >
           <Heading fontSize="lg" fontWeight="black" color="white">
             Lorem ipsum dolor sit amet consetetur sadipscing elitr sed diam nonumy eirmod.
@@ -46,7 +46,7 @@ const Hero = () => {
           bg="gray.700"
           backgroundImage="https://images.unsplash.com/photo-1507874457470-272b3c8d8ee2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80"
           backgroundPosition="center"
-          p={4}
+          p={8}
         >
           <Heading fontSize="lg" fontWeight="black" color="white">
             Lorem ipsum dolor sit amet consetetur sadipscing elitr sed diam nonumy eirmod.

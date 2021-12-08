@@ -6,7 +6,12 @@ function Footer() {
     <>
       <Box as="footer" background="#232f3e" color="white">
         <Container maxWidth="1200px" py={4}>
-          <Grid templateColumns="repeat(5, 1fr)" gap={4}>
+          <Grid display={["block", "grid"]} templateColumns="repeat(5, 1fr)" gap={4}>
+            <GridItem display={["block", "none"]} p={4}>
+              <Button width="full" size="sm" colorScheme="orange" borderRadius="sm">
+                Sign In to the Console
+              </Button>
+            </GridItem>
             <GridItem p={4}>
               <Heading fontSize="xl">Learn about AWS</Heading>
               <VStack mt={4} alignItems="start">
@@ -127,7 +132,7 @@ function Footer() {
               </VStack>
             </GridItem>
             <GridItem p={4}>
-              <Button size="sm" colorScheme="orange" borderRadius="sm">
+              <Button display={["none", "block"]} size="sm" colorScheme="orange" borderRadius="sm">
                 Create an AWS Account
               </Button>
               <Flex mt={6} gridGap={4}>
