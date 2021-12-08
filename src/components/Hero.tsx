@@ -38,16 +38,16 @@ const Hero = () => {
           backgroundSize="cover"
           p={[8, 5]}
         >
-          <Box>
-            <Heading fontSize="lg" color="white">
-              Lorem ipsum dolor sit amet consetetur sadipscing elitr sed diam nonumy eirmod.
+          <Container maxWidth="60%" ml={0}>
+            <Heading fontSize="md" color="white">
+              Lorem ipsum dolor sit amet consetetur sadipscing.
             </Heading>
             <Box mt={4}>
-              <Link color="teal.400" fontWeight="black">
+              <Link color="teal.400" fontSize="md" fontWeight="black">
                 CTA goes here <Icon as={GoChevronRight} verticalAlign="text-bottom" />
               </Link>
             </Box>
-          </Box>
+          </Container>
         </GridItem>
         <GridItem
           display="flex"
@@ -59,16 +59,16 @@ const Hero = () => {
           backgroundSize="cover"
           p={[8, 5]}
         >
-          <Box>
-            <Heading fontSize="lg" color="white">
-              Lorem ipsum dolor sit amet consetetur sadipscing elitr sed diam nonumy eirmod.
+          <Container maxWidth="60%" ml={0}>
+            <Heading fontSize="md" color="white">
+              Lorem ipsum dolor sit amet consetetur sadipscing.
             </Heading>
             <Box mt={4}>
-              <Link color="teal.400" fontWeight="black">
+              <Link color="teal.400" fontSize="md" fontWeight="black">
                 CTA goes here <Icon as={GoChevronRight} verticalAlign="text-bottom" />
               </Link>
             </Box>
-          </Box>
+          </Container>
         </GridItem>
       </Grid>
     </Box>

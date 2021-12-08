@@ -150,8 +150,8 @@ function Footer() {
             </GridItem>
           </Grid>
           <Text mx={4} fontSize="sm">
-            Language عربي Bahasa Indonesia Deutsch English Español Français Italiano Português Tiếng Việt Türkçe Ρусский ไทย 日本語 한국어 中文 (简体) 中文
-            (繁體)
+            Language&nbsp; عربي | Bahasa | Indonesia | Deutsch | English | Español | Français | Italiano | Português | Tiếng Việt | Türkçe | Ρусский | ไทย |
+            日本語 | 한국어 | 中文 (简体) | 中文 (繁體)
           </Text>
         </Container>
       </Box>

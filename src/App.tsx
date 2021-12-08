@@ -204,7 +204,7 @@ function App() {
         backgroundPosition="center"
         backgroundSize="cover"
       >
-        <Box maxWidth="1200px" textAlign="center" color="white" p={[4, 10]} mx="auto">
+        <Box maxWidth="1200px" textAlign="center" color="white" p={[4, 20]} mx="auto">
           <Heading fontSize="3xl" fontWeight="black">
             Lorem ipsum dolor sit amet
           </Heading>
