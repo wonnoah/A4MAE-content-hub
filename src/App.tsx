@@ -57,24 +57,20 @@ function App() {
       <Container maxWidth="1200px" background="#232f3e" p={0}>
         <Tabs>
           <TabList color="white" justifyContent="space-around">
-            <Tab p={[2, 4]} fontSize={["xs", "md"]} _selected={{ color: "white", borderBottom: "3px solid orange" }}>
-              Content
-              <br />
-              Production
+            <Tab p={[2, 4]} fontSize={["xs", "md"]} _selected={{ color: "white", borderBottom: "3px solid #38B2AC" }}>
+              Content Production
             </Tab>
-            <Tab p={[2, 4]} fontSize={["xs", "md"]} _selected={{ color: "white", borderBottom: "3px solid orange" }}>
-              Media Supply Chain <br />& Archive
+            <Tab p={[2, 4]} fontSize={["xs", "md"]} _selected={{ color: "white", borderBottom: "3px solid #38B2AC" }}>
+              Media Supply Chain
             </Tab>
-            <Tab p={[2, 4]} fontSize={["xs", "md"]} _selected={{ color: "white", borderBottom: "3px solid orange" }}>
+            <Tab p={[2, 4]} fontSize={["xs", "md"]} _selected={{ color: "white", borderBottom: "3px solid #38B2AC" }}>
               Broadcast
             </Tab>
-            <Tab p={[2, 4]} fontSize={["xs", "md"]} _selected={{ color: "white", borderBottom: "3px solid orange" }}>
+            <Tab p={[2, 4]} fontSize={["xs", "md"]} _selected={{ color: "white", borderBottom: "3px solid #38B2AC" }}>
               Direct-to-Consumer
-              <br />& Streaming
             </Tab>
-            <Tab p={[2, 4]} fontSize={["xs", "md"]} _selected={{ color: "white", borderBottom: "3px solid orange" }}>
-              Data Science
-              <br />& Analytics for Media
+            <Tab p={[2, 4]} fontSize={["xs", "md"]} _selected={{ color: "white", borderBottom: "3px solid #38B2AC" }}>
+              Data Science & Analytics
             </Tab>
           </TabList>
 
@@ -102,7 +98,7 @@ function App() {
                         </Heading>
                         <Box mt={3}>
                           <Link href={contentCtaURL} isExternal>
-                            <Text fontSize="lg" fontWeight="black">
+                            <Text fontSize="lg" fontWeight="black" color="teal.400">
                               CTA goes here <Icon as={GoChevronRight} verticalAlign="text-bottom" />
                             </Text>
                           </Link>
@@ -136,7 +132,7 @@ function App() {
                         </Heading>
                         <Box mt={3}>
                           <Link href={contentCtaURL} isExternal>
-                            <Text fontSize="lg" fontWeight="black">
+                            <Text fontSize="lg" fontWeight="black" color="teal.400">
                               CTA goes here <Icon as={GoChevronRight} verticalAlign="text-bottom" />
                             </Text>
                           </Link>
@@ -170,7 +166,7 @@ function App() {
                         </Heading>
                         <Box mt={3}>
                           <Link href={contentCtaURL} isExternal>
-                            <Text fontSize="lg" fontWeight="black">
+                            <Text fontSize="lg" fontWeight="black" color="teal.400">
                               CTA goes here <Icon as={GoChevronRight} verticalAlign="text-bottom" />
                             </Text>
                           </Link>
