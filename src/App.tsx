@@ -126,15 +126,15 @@ function App() {
                       backgroundSize="cover"
                       colSpan={2}
                       className="item"
-                      height="400px"
+                      height="350px"
                     >
                       <Flex flexDirection="column" justifyContent="end" alignItems="start" height="100%">
-                        <Heading fontSize="lg" fontWeight="bold" lineHeight={1.5}>
+                        <Heading fontSize="xl" fontWeight="bold" lineHeight={1.5}>
                           {contentTitle}
                         </Heading>
                         <Box mt={3}>
                           <Link href={contentCtaURL} isExternal _hover={{ textDecoration: "none" }}>
-                            <Text fontSize="lg" fontWeight="black" color="teal.400" _hover={{ color: "teal.200" }}>
+                            <Text fontSize="md" fontWeight="black" color="teal.400" _hover={{ color: "teal.200" }}>
                               Learn more <Icon as={GoChevronRight} verticalAlign="text-bottom" />
                             </Text>
                           </Link>
@@ -161,15 +161,15 @@ function App() {
                       backgroundSize="cover"
                       colSpan={2}
                       className="item"
-                      height="400px"
+                      height="350px"
                     >
                       <Flex flexDirection="column" justifyContent="end" alignItems="start" height="100%">
-                        <Heading fontSize="lg" fontWeight="bold" lineHeight={1.5}>
+                        <Heading fontSize="xl" fontWeight="bold" lineHeight={1.5}>
                           {contentTitle}
                         </Heading>
                         <Box mt={3}>
                           <Link href={contentCtaURL} isExternal _hover={{ textDecoration: "none" }}>
-                            <Text fontSize="lg" fontWeight="black" color="teal.400" _hover={{ color: "teal.200" }}>
+                            <Text fontSize="md" fontWeight="black" color="teal.400" _hover={{ color: "teal.200" }}>
                               Learn more <Icon as={GoChevronRight} verticalAlign="text-bottom" />
                             </Text>
                           </Link>
@@ -196,15 +196,15 @@ function App() {
                       backgroundSize="cover"
                       colSpan={2}
                       className="item"
-                      height="400px"
+                      height="350px"
                     >
                       <Flex flexDirection="column" justifyContent="end" alignItems="start" height="100%">
-                        <Heading fontSize="lg" fontWeight="bold" lineHeight={1.5}>
+                        <Heading fontSize="xl" fontWeight="bold" lineHeight={1.5}>
                           {contentTitle}
                         </Heading>
                         <Box mt={3}>
                           <Link href={contentCtaURL} isExternal _hover={{ textDecoration: "none" }}>
-                            <Text fontSize="lg" fontWeight="black" color="teal.400" _hover={{ color: "teal.200" }}>
+                            <Text fontSize="md" fontWeight="black" color="teal.400" _hover={{ color: "teal.200" }}>
                               Learn more <Icon as={GoChevronRight} verticalAlign="text-bottom" />
                             </Text>
                           </Link>
