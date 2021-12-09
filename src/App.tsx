@@ -160,11 +160,12 @@ function App() {
                         _hover={{ background: "hsla(177, 52%, 46%, .2)", color: "gray.200" }}
                       >
                         <Text
+                          as="em"
                           fontSize={["sm", "md"]}
                           lineHeight={"2"}
                           dangerouslySetInnerHTML={{ __html: contentDescription }}
                           noOfLines={3}
-                          _groupHover={{ color: "white" }}
+                          _groupHover={{ color: "teal.200" }}
                         />
                       </Box>
                     </GridItem>
@@ -222,11 +223,12 @@ function App() {
                         _hover={{ background: "hsla(177, 52%, 46%, .2)", color: "gray.200" }}
                       >
                         <Text
+                          as="em"
                           fontSize={["sm", "md"]}
                           lineHeight={"2"}
                           dangerouslySetInnerHTML={{ __html: contentDescription }}
                           noOfLines={3}
-                          _groupHover={{ color: "white" }}
+                          _groupHover={{ color: "teal.200" }}
                         />
                       </Box>
                     </GridItem>
@@ -284,11 +286,12 @@ function App() {
                         _hover={{ background: "hsla(177, 52%, 46%, .2)", color: "gray.200" }}
                       >
                         <Text
+                          as="em"
                           fontSize={["sm", "md"]}
                           lineHeight={"2"}
                           dangerouslySetInnerHTML={{ __html: contentDescription }}
                           noOfLines={3}
-                          _groupHover={{ color: "white" }}
+                          _groupHover={{ color: "teal.200" }}
                         />
                       </Box>
                     </GridItem>
