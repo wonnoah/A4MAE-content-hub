@@ -13,7 +13,8 @@ const Hero = () => {
           backgroundPosition="center"
           backgroundSize="cover"
           minHeight="400px"
-          p={[6, 20]}
+          p={[6]}
+          py={[24]}
         >
           <Container>
             <Box>
