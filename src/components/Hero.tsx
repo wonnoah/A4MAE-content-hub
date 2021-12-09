@@ -23,7 +23,7 @@ const Hero = () => {
             </Box>
             <Box mt={6}>
               <Link fontWeight="black" color="teal.400">
-                CTA goes here <Icon as={GoChevronRight} verticalAlign="text-bottom" />
+                Learn more <Icon as={GoChevronRight} verticalAlign="text-bottom" />
               </Link>
             </Box>
           </Container>
@@ -36,15 +36,16 @@ const Hero = () => {
           backgroundImage="linear-gradient(rgba(0,0,0, 0.4),rgba(0,0,0, 0.7)),url(https://images.unsplash.com/photo-1587893904933-5b23fefaea6d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80)"
           backgroundPosition="center"
           backgroundSize="cover"
+          mt={[2, 0]}
           p={[8, 5]}
         >
-          <Container maxWidth="60%" ml={0}>
-            <Heading fontSize="md" color="white">
+          <Container maxWidth={["100%", "50%"]} ml={0}>
+            <Heading fontSize="md" color="white" lineHeight={1.5}>
               Lorem ipsum dolor sit amet consetetur sadipscing.
             </Heading>
             <Box mt={4}>
               <Link color="teal.400" fontSize="md" fontWeight="black">
-                CTA goes here <Icon as={GoChevronRight} verticalAlign="text-bottom" />
+                Learn more <Icon as={GoChevronRight} verticalAlign="text-bottom" />
               </Link>
             </Box>
           </Container>
@@ -57,15 +58,16 @@ const Hero = () => {
           backgroundImage="linear-gradient(rgba(0,0,0, 0.4),rgba(0,0,0, 0.7)),url(https://images.unsplash.com/photo-1598387992619-f86d5293bace?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1752&q=80)"
           backgroundPosition="center"
           backgroundSize="cover"
+          mt={[2, 0]}
           p={[8, 5]}
         >
-          <Container maxWidth="60%" ml={0}>
-            <Heading fontSize="md" color="white">
+          <Container maxWidth={["100%", "50%"]} ml={0}>
+            <Heading fontSize="md" color="white" lineHeight={1.5}>
               Lorem ipsum dolor sit amet consetetur sadipscing.
             </Heading>
             <Box mt={4}>
               <Link color="teal.400" fontSize="md" fontWeight="black">
-                CTA goes here <Icon as={GoChevronRight} verticalAlign="text-bottom" />
+                Learn more <Icon as={GoChevronRight} verticalAlign="text-bottom" />
               </Link>
             </Box>
           </Container>

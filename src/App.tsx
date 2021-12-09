@@ -42,11 +42,11 @@ function App() {
     <Layout>
       <Hero />
       <Container maxWidth="1200px" background="#232f3e">
-        <Box textAlign="center" color="white" p={[4, 10]}>
-          <Heading fontSize="3xl" fontWeight="bold">
+        <Box textAlign="center" color="white" py={14}>
+          <Heading fontSize={["2xl", "3xl"]} fontWeight="bold">
             Lorem ipsum dolor sit amet
           </Heading>
-          <Text fontSize="lg" mt={4}>
+          <Text fontSize={["md", "lg"]} mt={4} lineHeight={2}>
             Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
             voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus et Lorem ipsum dolor sit amet.
             Lrem ipsum dolor sit amet sed diam nonumy.
@@ -55,34 +55,70 @@ function App() {
       </Container>
 
       <Container maxWidth="1200px" background="#232f3e" p={0}>
-        <Tabs>
-          <TabList color="white" justifyContent="space-around">
-            <Tab p={[2, 4]} fontSize={["xs", "md"]} _selected={{ color: "white", borderBottom: "3px solid #38B2AC" }}>
+        <Tabs variant="enclosed">
+          <TabList color="white" justifyContent="space-around" px={3}>
+            <Tab
+              px={[2, 4]}
+              fontSize={["xs", "md"]}
+              fontWeight="medium"
+              color="gray.300"
+              _selected={{ color: "white", fontWeight: "bold", borderBottom: "3px solid #38B2AC" }}
+              _hover={{ color: "white" }}
+            >
               Content Production
             </Tab>
-            <Tab p={[2, 4]} fontSize={["xs", "md"]} _selected={{ color: "white", borderBottom: "3px solid #38B2AC" }}>
+            <Tab
+              px={[2, 4]}
+              fontSize={["xs", "md"]}
+              fontWeight="medium"
+              color="gray.300"
+              _selected={{ color: "white", fontWeight: "bold", borderBottom: "3px solid #38B2AC" }}
+              _hover={{ color: "white" }}
+            >
               Media Supply Chain
             </Tab>
-            <Tab p={[2, 4]} fontSize={["xs", "md"]} _selected={{ color: "white", borderBottom: "3px solid #38B2AC" }}>
+            <Tab
+              px={[2, 4]}
+              fontSize={["xs", "md"]}
+              fontWeight="medium"
+              color="gray.300"
+              _selected={{ color: "white", fontWeight: "bold", borderBottom: "3px solid #38B2AC" }}
+              _hover={{ color: "white" }}
+            >
               Broadcast
             </Tab>
-            <Tab p={[2, 4]} fontSize={["xs", "md"]} _selected={{ color: "white", borderBottom: "3px solid #38B2AC" }}>
+            <Tab
+              px={[2, 4]}
+              fontSize={["xs", "md"]}
+              fontWeight="medium"
+              color="gray.300"
+              _selected={{ color: "white", fontWeight: "bold", borderBottom: "3px solid #38B2AC" }}
+              _hover={{ color: "white" }}
+            >
               Direct-to-Consumer
             </Tab>
-            <Tab p={[2, 4]} fontSize={["xs", "md"]} _selected={{ color: "white", borderBottom: "3px solid #38B2AC" }}>
+            <Tab
+              px={[2, 4]}
+              fontSize={["xs", "md"]}
+              fontWeight="medium"
+              color="gray.300"
+              _selected={{ color: "white", fontWeight: "bold", borderBottom: "3px solid #38B2AC" }}
+              _hover={{ color: "white" }}
+            >
               Data Science & Analytics
             </Tab>
           </TabList>
 
           <TabPanels>
             <TabPanel>
-              <Grid display={["block", "grid"]} templateColumns="repeat(4, 1fr)" gap={5} mt={14}>
+              <Grid display={["block", "grid"]} templateColumns="repeat(4, 1fr)" gap={5} mt={4}>
                 {data.map((item, i) => {
                   const { contentTitle, contentDescription, contentCtaURL } = item.item.additionalFields;
                   return (
                     <GridItem
                       key={i}
                       color="white"
+                      mt={[4, 0]}
                       p={8}
                       background="gray.700"
                       backgroundImage="linear-gradient(rgba(0,0,0, 0.4),rgba(0,0,0, 0.7)),url(https://images.unsplash.com/photo-1523961131990-5ea7c61b2107?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80)"
@@ -93,13 +129,13 @@ function App() {
                       height="400px"
                     >
                       <Flex flexDirection="column" justifyContent="end" alignItems="start" height="100%">
-                        <Heading fontSize="lg" fontWeight="medium">
+                        <Heading fontSize="lg" fontWeight="bold" lineHeight={1.5}>
                           {contentTitle}
                         </Heading>
                         <Box mt={3}>
-                          <Link href={contentCtaURL} isExternal>
-                            <Text fontSize="lg" fontWeight="black" color="teal.400">
-                              CTA goes here <Icon as={GoChevronRight} verticalAlign="text-bottom" />
+                          <Link href={contentCtaURL} isExternal _hover={{ textDecoration: "none" }}>
+                            <Text fontSize="lg" fontWeight="black" color="teal.400" _hover={{ color: "teal.200" }}>
+                              Learn more <Icon as={GoChevronRight} verticalAlign="text-bottom" />
                             </Text>
                           </Link>
                         </Box>
@@ -110,13 +146,14 @@ function App() {
               </Grid>
             </TabPanel>
             <TabPanel>
-              <Grid display={["block", "grid"]} templateColumns="repeat(4, 1fr)" gap={5} mt={14}>
+              <Grid display={["block", "grid"]} templateColumns="repeat(4, 1fr)" gap={5} mt={4}>
                 {ebooks.map((ebook, i) => {
                   const { contentTitle, contentDescription, contentCtaURL } = ebook.item.additionalFields;
                   return (
                     <GridItem
                       key={i}
                       color="white"
+                      mt={[4, 0]}
                       p={8}
                       background="gray.700"
                       backgroundImage="linear-gradient(rgba(0,0,0, 0.4),rgba(0,0,0, 0.7)),url(https://images.unsplash.com/photo-1637942695886-69c5094fb1bb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80)"
@@ -127,13 +164,13 @@ function App() {
                       height="400px"
                     >
                       <Flex flexDirection="column" justifyContent="end" alignItems="start" height="100%">
-                        <Heading fontSize="lg" fontWeight="medium">
+                        <Heading fontSize="lg" fontWeight="bold" lineHeight={1.5}>
                           {contentTitle}
                         </Heading>
                         <Box mt={3}>
-                          <Link href={contentCtaURL} isExternal>
-                            <Text fontSize="lg" fontWeight="black" color="teal.400">
-                              CTA goes here <Icon as={GoChevronRight} verticalAlign="text-bottom" />
+                          <Link href={contentCtaURL} isExternal _hover={{ textDecoration: "none" }}>
+                            <Text fontSize="lg" fontWeight="black" color="teal.400" _hover={{ color: "teal.200" }}>
+                              Learn more <Icon as={GoChevronRight} verticalAlign="text-bottom" />
                             </Text>
                           </Link>
                         </Box>
@@ -144,13 +181,14 @@ function App() {
               </Grid>
             </TabPanel>
             <TabPanel>
-              <Grid display={["block", "grid"]} templateColumns="repeat(4, 1fr)" gap={5} mt={14}>
+              <Grid display={["block", "grid"]} templateColumns="repeat(4, 1fr)" gap={5} mt={4}>
                 {webcasts.map((webcast, i) => {
                   const { contentTitle, contentDescription, contentCtaURL } = webcast.item.additionalFields;
                   return (
                     <GridItem
                       key={i}
                       color="white"
+                      mt={[4, 0]}
                       p={8}
                       background="gray.700"
                       backgroundImage="linear-gradient(rgba(0,0,0, 0.4),rgba(0,0,0, 0.7)),url(https://images.unsplash.com/photo-1497493292307-31c376b6e479?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1742&q=80)"
@@ -161,13 +199,13 @@ function App() {
                       height="400px"
                     >
                       <Flex flexDirection="column" justifyContent="end" alignItems="start" height="100%">
-                        <Heading fontSize="lg" fontWeight="medium">
+                        <Heading fontSize="lg" fontWeight="bold" lineHeight={1.5}>
                           {contentTitle}
                         </Heading>
                         <Box mt={3}>
-                          <Link href={contentCtaURL} isExternal>
-                            <Text fontSize="lg" fontWeight="black" color="teal.400">
-                              CTA goes here <Icon as={GoChevronRight} verticalAlign="text-bottom" />
+                          <Link href={contentCtaURL} isExternal _hover={{ textDecoration: "none" }}>
+                            <Text fontSize="lg" fontWeight="black" color="teal.400" _hover={{ color: "teal.200" }}>
+                              Learn more <Icon as={GoChevronRight} verticalAlign="text-bottom" />
                             </Text>
                           </Link>
                         </Box>
@@ -199,16 +237,16 @@ function App() {
         maxWidth="full"
         background="gray.700"
         mt={20}
-        py={8}
+        py={14}
         backgroundImage="https://images.unsplash.com/photo-1558811916-51c8d56d29c6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
         backgroundPosition="center"
         backgroundSize="cover"
       >
         <Box maxWidth="1200px" textAlign="center" color="white" p={[4, 20]} mx="auto">
-          <Heading fontSize="3xl" fontWeight="black">
+          <Heading fontSize={["2xl", "3xl"]} fontWeight="black">
             Lorem ipsum dolor sit amet
           </Heading>
-          <Text fontSize="lg" mt={4}>
+          <Text fontSize={["md", "lg"]} mt={4} lineHeight={2}>
             Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
             voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus et Lorem ipsum dolor sit amet.
             Lrem ipsum dolor sit amet sed diam nonumy.
