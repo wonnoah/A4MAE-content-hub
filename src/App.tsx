@@ -116,6 +116,8 @@ function App() {
                   const { contentTitle, contentDescription, contentCtaURL } = item.item.additionalFields;
                   return (
                     <GridItem
+                      role="group"
+                      position="relative"
                       key={i}
                       color="white"
                       mt={[4, 0]}
@@ -132,14 +134,39 @@ function App() {
                         <Heading fontSize="xl" fontWeight="bold" lineHeight={1.5}>
                           {contentTitle}
                         </Heading>
-                        <Box mt={3}>
-                          <Link href={contentCtaURL} isExternal _hover={{ textDecoration: "none" }}>
-                            <Text fontSize="md" fontWeight="black" color="teal.400" _hover={{ color: "teal.200" }}>
+                        <Box mt={3} zIndex={100}>
+                          <Link href={contentCtaURL} isExternal transition="all 2s ease" _hover={{ textUnderline: "none" }}>
+                            <Text
+                              fontSize="md"
+                              fontWeight="black"
+                              color="teal.400"
+                              transition="all .2s ease"
+                              _hover={{ textDecoration: "underline", textUnderlineOffset: ".2em", color: "teal.100" }}
+                            >
                               Learn more <Icon as={GoChevronRight} verticalAlign="text-bottom" />
                             </Text>
                           </Link>
                         </Box>
                       </Flex>
+                      <Box
+                        p={8}
+                        position="absolute"
+                        top="0px"
+                        left="0px"
+                        width="100%"
+                        height="100%"
+                        transition="all 0.4s ease"
+                        color="transparent"
+                        _hover={{ background: "hsla(177, 52%, 46%, .2)", color: "gray.200" }}
+                      >
+                        <Text
+                          fontSize={["sm", "md"]}
+                          lineHeight={"2"}
+                          dangerouslySetInnerHTML={{ __html: contentDescription }}
+                          noOfLines={3}
+                          _groupHover={{ color: "white" }}
+                        />
+                      </Box>
                     </GridItem>
                   );
                 })}
@@ -151,6 +178,8 @@ function App() {
                   const { contentTitle, contentDescription, contentCtaURL } = ebook.item.additionalFields;
                   return (
                     <GridItem
+                      role="group"
+                      position="relative"
                       key={i}
                       color="white"
                       mt={[4, 0]}
@@ -167,14 +196,39 @@ function App() {
                         <Heading fontSize="xl" fontWeight="bold" lineHeight={1.5}>
                           {contentTitle}
                         </Heading>
-                        <Box mt={3}>
-                          <Link href={contentCtaURL} isExternal _hover={{ textDecoration: "none" }}>
-                            <Text fontSize="md" fontWeight="black" color="teal.400" _hover={{ color: "teal.200" }}>
+                        <Box mt={3} zIndex={100}>
+                          <Link href={contentCtaURL} isExternal transition="all 2s ease" _hover={{ textUnderline: "none" }}>
+                            <Text
+                              fontSize="md"
+                              fontWeight="black"
+                              color="teal.400"
+                              transition="all .2s ease"
+                              _hover={{ textDecoration: "underline", textUnderlineOffset: ".2em", color: "teal.100" }}
+                            >
                               Learn more <Icon as={GoChevronRight} verticalAlign="text-bottom" />
                             </Text>
                           </Link>
                         </Box>
                       </Flex>
+                      <Box
+                        p={8}
+                        position="absolute"
+                        top="0px"
+                        left="0px"
+                        width="100%"
+                        height="100%"
+                        transition="all 0.4s ease"
+                        color="transparent"
+                        _hover={{ background: "hsla(177, 52%, 46%, .2)", color: "gray.200" }}
+                      >
+                        <Text
+                          fontSize={["sm", "md"]}
+                          lineHeight={"2"}
+                          dangerouslySetInnerHTML={{ __html: contentDescription }}
+                          noOfLines={3}
+                          _groupHover={{ color: "white" }}
+                        />
+                      </Box>
                     </GridItem>
                   );
                 })}
@@ -186,6 +240,8 @@ function App() {
                   const { contentTitle, contentDescription, contentCtaURL } = webcast.item.additionalFields;
                   return (
                     <GridItem
+                      role="group"
+                      position="relative"
                       key={i}
                       color="white"
                       mt={[4, 0]}
@@ -202,14 +258,39 @@ function App() {
                         <Heading fontSize="xl" fontWeight="bold" lineHeight={1.5}>
                           {contentTitle}
                         </Heading>
-                        <Box mt={3}>
-                          <Link href={contentCtaURL} isExternal _hover={{ textDecoration: "none" }}>
-                            <Text fontSize="md" fontWeight="black" color="teal.400" _hover={{ color: "teal.200" }}>
+                        <Box mt={3} zIndex={100}>
+                          <Link href={contentCtaURL} isExternal transition="all 2s ease" _hover={{ textUnderline: "none" }}>
+                            <Text
+                              fontSize="md"
+                              fontWeight="black"
+                              color="teal.400"
+                              transition="all .2s ease"
+                              _hover={{ textDecoration: "underline", textUnderlineOffset: ".2em", color: "teal.100" }}
+                            >
                               Learn more <Icon as={GoChevronRight} verticalAlign="text-bottom" />
                             </Text>
                           </Link>
                         </Box>
                       </Flex>
+                      <Box
+                        p={8}
+                        position="absolute"
+                        top="0px"
+                        left="0px"
+                        width="100%"
+                        height="100%"
+                        transition="all 0.4s ease"
+                        color="transparent"
+                        _hover={{ background: "hsla(177, 52%, 46%, .2)", color: "gray.200" }}
+                      >
+                        <Text
+                          fontSize={["sm", "md"]}
+                          lineHeight={"2"}
+                          dangerouslySetInnerHTML={{ __html: contentDescription }}
+                          noOfLines={3}
+                          _groupHover={{ color: "white" }}
+                        />
+                      </Box>
                     </GridItem>
                   );
                 })}

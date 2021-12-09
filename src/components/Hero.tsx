@@ -22,9 +22,17 @@ const Hero = () => {
                 Lorem ipsum dolor sit amet sadipscing elitr sed
               </Heading>
             </Box>
-            <Box mt={6}>
-              <Link fontWeight="black" color="teal.400">
-                Learn more <Icon as={GoChevronRight} verticalAlign="text-bottom" />
+            <Box mt={3}>
+              <Link href="#" isExternal transition="all 2s ease" _hover={{ textUnderline: "none" }}>
+                <Text
+                  fontSize="md"
+                  fontWeight="black"
+                  color="teal.400"
+                  transition="all .2s ease"
+                  _hover={{ textDecoration: "underline", textUnderlineOffset: ".2em", color: "teal.100" }}
+                >
+                  Learn more <Icon as={GoChevronRight} verticalAlign="text-bottom" />
+                </Text>
               </Link>
             </Box>
           </Container>
@@ -45,9 +53,17 @@ const Hero = () => {
             <Heading fontSize="xl" fontWeight="bold" color="white" lineHeight={1.5}>
               Lorem ipsum dolor sit amet consetetur sadipscing.
             </Heading>
-            <Box mt={4}>
-              <Link color="teal.400" fontSize="md" fontWeight="black">
-                Learn more <Icon as={GoChevronRight} verticalAlign="text-bottom" />
+            <Box mt={3}>
+              <Link href="#" isExternal transition="all 2s ease" _hover={{ textUnderline: "none" }}>
+                <Text
+                  fontSize="md"
+                  fontWeight="black"
+                  color="teal.400"
+                  transition="all .2s ease"
+                  _hover={{ textDecoration: "underline", textUnderlineOffset: ".2em", color: "teal.100" }}
+                >
+                  Learn more <Icon as={GoChevronRight} verticalAlign="text-bottom" />
+                </Text>
               </Link>
             </Box>
           </Container>
@@ -68,9 +84,17 @@ const Hero = () => {
             <Heading fontSize="xl" fontWeight="bold" color="white" lineHeight={1.5}>
               Lorem ipsum dolor sit amet consetetur sadipscing.
             </Heading>
-            <Box mt={4}>
-              <Link color="teal.400" fontSize="md" fontWeight="black">
-                Learn more <Icon as={GoChevronRight} verticalAlign="text-bottom" />
+            <Box mt={3}>
+              <Link href="#" isExternal transition="all 2s ease" _hover={{ textUnderline: "none" }}>
+                <Text
+                  fontSize="md"
+                  fontWeight="black"
+                  color="teal.400"
+                  transition="all .2s ease"
+                  _hover={{ textDecoration: "underline", textUnderlineOffset: ".2em", color: "teal.100" }}
+                >
+                  Learn more <Icon as={GoChevronRight} verticalAlign="text-bottom" />
+                </Text>
               </Link>
             </Box>
           </Container>
