@@ -12,10 +12,12 @@
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
     "focus-visible": "^5.2.0",
-    "framer-motion": "^4",
+    "framer-motion": "^5.4.5",
+    "moment": "^2.29.1",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
     "react-icons": "^4.3.1",
+    "react-intersection-observer": "^8.33.0",
     "sass": "^1.44.0"
   },
   "devDependencies": {

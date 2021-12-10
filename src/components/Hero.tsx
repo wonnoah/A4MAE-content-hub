@@ -49,7 +49,7 @@ const Hero = () => {
           backgroundImage="linear-gradient(rgba(0,0,0, 0.4),rgba(0,0,0, 0.7)),url(https://images.unsplash.com/photo-1587893904933-5b23fefaea6d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80)"
           backgroundPosition="center"
           backgroundSize="cover"
-          mt={[2, 0]}
+          mt={[4, 0]}
           p={6}
         >
           <Container maxWidth={["100%", "75%"]} ml={0}>
@@ -83,7 +83,7 @@ const Hero = () => {
           backgroundImage="linear-gradient(rgba(0,0,0, 0.4),rgba(0,0,0, 0.7)),url(https://images.unsplash.com/photo-1598387992619-f86d5293bace?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1752&q=80)"
           backgroundPosition="center"
           backgroundSize="cover"
-          mt={[2, 0]}
+          mt={[4, 0]}
           p={6}
         >
           <Container maxWidth={["100%", "75%"]} ml={0}>
