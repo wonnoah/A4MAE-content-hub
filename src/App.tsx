@@ -2,34 +2,67 @@ import { useState, useEffect } from "react";
 import Layout from "./components/Layout";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
-import { Box, Center, Container, Heading, Icon, Image, Link, Flex, Grid, GridItem, Tabs, TabList, TabPanels, Tab, TabPanel, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Circle,
+  Center,
+  Container,
+  Heading,
+  HStack,
+  Icon,
+  Image,
+  Link,
+  Flex,
+  Grid,
+  GridItem,
+  Tabs,
+  TabList,
+  TabPanels,
+  Tab,
+  TabPanel,
+  Text,
+} from "@chakra-ui/react";
 import { GoChevronRight } from "react-icons/go";
 
 // Adobe XD: https://xd.adobe.com/view/20ffd87b-1008-4d82-bc49-2e39c3cb2b1d-75ac/
 
 function App() {
-  const [data, setData] = useState([]);
+  const [all, setAll] = useState([]);
+  console.log("🚀 ~ file: App.tsx ~ line 12 ~ App ~ data", all);
   const [ebooks, setEbooks] = useState([]);
-  console.log("🚀 ~ file: App.tsx ~ line 13 ~ App ~ ebooks", ebooks);
   const [whitepapers, setWhitepapers] = useState([]);
-  console.log("🚀 ~ file: App.tsx ~ line 15 ~ App ~ whitepapers", whitepapers);
   const [webcasts, setWebcasts] = useState([]);
-  console.log("🚀 ~ file: App.tsx ~ line 17 ~ App ~ webcasts", webcasts);
+  const [onlineConferences, setOnlineConferences] = useState([]);
+
+  const all10Limit = ebooks.slice(0, 10);
+  const ebooks10Limit = ebooks.slice(0, 10);
+  const whitepapers10Limit = whitepapers.slice(0, 10);
+  const webcasts10Limit = webcasts.slice(0, 10);
 
   useEffect(() => {
-    const apiURL =
-      "https://aws.amazon.com/api/dirs/items/search?item.directoryId=media-resources&sort_by=item.dateCreated&sort_order=desc&size=12&item.locale=en_US";
+    const all =
+      "https://aws.amazon.com/api/dirs/items/search?item.directoryId=media-resources&sort_by=item.dateCreated&sort_order=desc&size=50&item.locale=en_US";
+    const ebooks =
+      "https://aws.amazon.com/api/dirs/items/search?item.directoryId=media-resources&sort_by=item.dateCreated&sort_order=desc&size=12&item.locale=en_US&tags.id=media-resources%23contentcategory%23e-books";
+    const webcasts =
+      "https://aws.amazon.com/api/dirs/items/search?item.directoryId=media-resources&sort_by=item.dateCreated&sort_order=desc&size=12&item.locale=en_US&tags.id=media-resources%23contentcategory%23webcast";
+    const whitepapers =
+      "https://aws.amazon.com/api/dirs/items/search?item.directoryId=media-resources&sort_by=item.dateCreated&sort_order=desc&size=12&item.locale=en_US&tags.id=media-resources%23contentcategory%23white-paper";
+
+    const apiURL = all;
     const proxyURL = "https://powerful-bastion-47434.herokuapp.com/";
 
     const fetchData = async () => {
       try {
         const response = await fetch(proxyURL + apiURL);
         const json = await response.json();
-        console.log(json);
-        setData(json.items);
-        setEbooks(json.items.filter((x: any) => x.item.additionalFields.contentCategory === "e-book"));
-        setWhitepapers(json.items.filter((x: any) => x.item.additionalFields.contentCategory === "whitepapers"));
-        setWebcasts(json.items.filter((x: any) => x.item.additionalFields.contentCategory === "Webcast"));
+        setAll(json.items);
+        setEbooks(json.items.filter((x: any) => x.item.additionalFields.contentCategory === "e-book" || x.item.additionalFields.contentCategory === "E-Book"));
+        setWhitepapers(json.items.filter((x: any) => x.item.additionalFields.contentCategory === "White Paper"));
+        setWebcasts(
+          json.items.filter((x: any) => x.item.additionalFields.contentCategory === "Webcast" || x.item.additionalFields.contentCategory === "WEBCAST")
+        );
+        setOnlineConferences(json.items.filter((x: any) => x.item.additionalFields.contentCategory === "Online Conference"));
       } catch (error) {
         console.log("error", error);
       }
@@ -111,193 +144,386 @@ function App() {
 
           <TabPanels>
             <TabPanel>
-              <Grid display={["block", "grid"]} templateColumns="repeat(4, 1fr)" gap={5} mt={4}>
-                {data.map((item, i) => {
-                  const { contentTitle, contentDescription, contentCtaURL } = item.item.additionalFields;
-                  return (
-                    <GridItem
-                      role="group"
-                      position="relative"
-                      key={i}
-                      color="white"
-                      mt={[4, 0]}
-                      p={8}
-                      background="gray.700"
-                      backgroundImage="linear-gradient(rgba(0,0,0, 0.4),rgba(0,0,0, 0.7)),url(https://images.unsplash.com/photo-1523961131990-5ea7c61b2107?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80)"
-                      backgroundPosition="center"
-                      backgroundSize="cover"
-                      colSpan={2}
-                      className="item"
-                      height="350px"
-                    >
-                      <Flex flexDirection="column" justifyContent="end" alignItems="start" height="100%">
-                        <Heading fontSize="xl" fontWeight="bold" lineHeight={1.5}>
-                          {contentTitle}
-                        </Heading>
-                        <Box mt={3} zIndex={100}>
-                          <Link href={contentCtaURL} isExternal transition="all 2s ease" _hover={{ textUnderline: "none" }}>
-                            <Text
-                              fontSize="md"
-                              fontWeight="black"
-                              color="teal.400"
-                              transition="all .2s ease"
-                              _hover={{ textDecoration: "underline", textUnderlineOffset: ".2em", color: "teal.100" }}
+              <Tabs size="sm" variant="soft-rounded">
+                <TabList>
+                  <Tab color="gray.200" _selected={{ background: "teal.600" }}>
+                    <Circle size="25px" color="gray.300" bg="teal.700" mr="2">
+                      <Text fontSize="xs"> {all.length}</Text>
+                    </Circle>
+                    All
+                  </Tab>
+                  <Tab color="gray.200" _selected={{ background: "teal.600" }}>
+                    <Circle size="25px" color="gray.300" bg="teal.700" mr="2">
+                      <Text fontSize="xs"> {ebooks.length}</Text>
+                    </Circle>
+                    E-Books
+                  </Tab>
+                  <Tab color="gray.200" _selected={{ background: "teal.600" }}>
+                    <Circle size="25px" color="gray.300" bg="teal.700" mr="2">
+                      <Text fontSize="xs"> {webcasts.length}</Text>
+                    </Circle>
+                    Webcasts
+                  </Tab>
+                  <Tab color="gray.200" _selected={{ background: "teal.600" }}>
+                    <Circle size="25px" color="gray.300" bg="teal.700" mr="2">
+                      <Text fontSize="xs"> {whitepapers.length}</Text>
+                    </Circle>
+                    White Papers
+                  </Tab>
+                  <Tab color="gray.200" _selected={{ background: "teal.600" }}>
+                    <Circle size="25px" color="gray.300" bg="teal.700" mr="2">
+                      <Text fontSize="xs"> {onlineConferences.length}</Text>
+                    </Circle>
+                    Online Conferences
+                  </Tab>
+                </TabList>
+                <TabPanels>
+                  <TabPanel>
+                    <Grid display={["block", "grid"]} templateColumns="repeat(4, 1fr)" gap={5} mt={4}>
+                      {all.map((item, i) => {
+                        const { contentCategory, contentTitle, contentDescription, contentCtaURL } = item.item.additionalFields;
+                        return (
+                          <GridItem
+                            role="group"
+                            position="relative"
+                            key={i}
+                            color="white"
+                            mt={[4, 0]}
+                            p={8}
+                            background="gray.700"
+                            backgroundImage="linear-gradient(rgba(0,0,0, 0.4),rgba(0,0,0, 0.7)),url(https://images.unsplash.com/photo-1523961131990-5ea7c61b2107?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80)"
+                            backgroundPosition="center"
+                            backgroundSize="cover"
+                            colSpan={2}
+                            className="item"
+                            height="350px"
+                          >
+                            <Flex flexDirection="column" justifyContent="end" alignItems="start" height="100%">
+                              <Heading fontSize="xl" fontWeight="bold" lineHeight={1.5}>
+                                {contentTitle}
+                              </Heading>
+                              <Text fontSize="xs" color="gray.500" fontWeight="bold" textTransform="uppercase" letterSpacing="0.2em">
+                                {contentCategory}
+                              </Text>
+                              <Box mt={3} zIndex={100}>
+                                <Link href={contentCtaURL} isExternal transition="all 2s ease" _hover={{ textUnderline: "none" }}>
+                                  <Text
+                                    fontSize="md"
+                                    fontWeight="black"
+                                    color="teal.400"
+                                    transition="all .2s ease"
+                                    _hover={{ textDecoration: "underline", textUnderlineOffset: ".2em", color: "teal.100" }}
+                                  >
+                                    Learn more <Icon as={GoChevronRight} verticalAlign="text-bottom" />
+                                  </Text>
+                                </Link>
+                              </Box>
+                            </Flex>
+                            <Box
+                              p={8}
+                              position="absolute"
+                              top="0px"
+                              left="0px"
+                              width="100%"
+                              height="100%"
+                              transition="all 0.4s ease"
+                              color="transparent"
+                              _hover={{ background: "hsla(177, 52%, 46%, .2)", color: "gray.200" }}
                             >
-                              Learn more <Icon as={GoChevronRight} verticalAlign="text-bottom" />
-                            </Text>
-                          </Link>
-                        </Box>
-                      </Flex>
-                      <Box
-                        p={8}
-                        position="absolute"
-                        top="0px"
-                        left="0px"
-                        width="100%"
-                        height="100%"
-                        transition="all 0.4s ease"
-                        color="transparent"
-                        _hover={{ background: "hsla(177, 52%, 46%, .2)", color: "gray.200" }}
-                      >
-                        <Text
-                          as="em"
-                          fontSize={["sm", "md"]}
-                          lineHeight={"2"}
-                          dangerouslySetInnerHTML={{ __html: contentDescription }}
-                          noOfLines={3}
-                          _groupHover={{ color: "teal.200" }}
-                        />
-                      </Box>
-                    </GridItem>
-                  );
-                })}
-              </Grid>
+                              <Text
+                                as="em"
+                                fontSize={["sm", "md"]}
+                                lineHeight={"2"}
+                                dangerouslySetInnerHTML={{ __html: contentDescription }}
+                                noOfLines={3}
+                                _groupHover={{ color: "teal.200" }}
+                              />
+                            </Box>
+                          </GridItem>
+                        );
+                      })}
+                    </Grid>
+                  </TabPanel>
+                  <TabPanel>
+                    <Grid display={["block", "grid"]} templateColumns="repeat(4, 1fr)" gap={5} mt={4}>
+                      {ebooks.map((ebook, i) => {
+                        const { contentCategory, contentTitle, contentDescription, contentCtaURL } = ebook.item.additionalFields;
+                        return (
+                          <GridItem
+                            role="group"
+                            position="relative"
+                            key={i}
+                            color="white"
+                            mt={[4, 0]}
+                            p={8}
+                            background="gray.700"
+                            backgroundImage="linear-gradient(rgba(0,0,0, 0.4),rgba(0,0,0, 0.7)),url(https://images.unsplash.com/photo-1637942695886-69c5094fb1bb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80)"
+                            backgroundPosition="center"
+                            backgroundSize="cover"
+                            colSpan={2}
+                            className="item"
+                            height="350px"
+                          >
+                            <Flex flexDirection="column" justifyContent="end" alignItems="start" height="100%">
+                              <Heading fontSize="xl" fontWeight="bold" lineHeight={1.5}>
+                                {contentTitle}
+                              </Heading>
+                              <Text fontSize="xs" color="gray.500" fontWeight="bold" textTransform="uppercase" letterSpacing="0.2em">
+                                {contentCategory}
+                              </Text>
+                              <Box mt={3} zIndex={100}>
+                                <Link href={contentCtaURL} isExternal transition="all 2s ease" _hover={{ textUnderline: "none" }}>
+                                  <Text
+                                    fontSize="md"
+                                    fontWeight="black"
+                                    color="teal.400"
+                                    transition="all .2s ease"
+                                    _hover={{ textDecoration: "underline", textUnderlineOffset: ".2em", color: "teal.100" }}
+                                  >
+                                    Learn more <Icon as={GoChevronRight} verticalAlign="text-bottom" />
+                                  </Text>
+                                </Link>
+                              </Box>
+                            </Flex>
+                            <Box
+                              p={8}
+                              position="absolute"
+                              top="0px"
+                              left="0px"
+                              width="100%"
+                              height="100%"
+                              transition="all 0.4s ease"
+                              color="transparent"
+                              _hover={{ background: "hsla(177, 52%, 46%, .2)", color: "gray.200" }}
+                            >
+                              <Text
+                                as="em"
+                                fontSize={["sm", "md"]}
+                                lineHeight={"2"}
+                                dangerouslySetInnerHTML={{ __html: contentDescription }}
+                                noOfLines={3}
+                                _groupHover={{ color: "teal.200" }}
+                              />
+                            </Box>
+                          </GridItem>
+                        );
+                      })}
+                    </Grid>
+                  </TabPanel>
+                  <TabPanel>
+                    <Grid display={["block", "grid"]} templateColumns="repeat(4, 1fr)" gap={5} mt={4}>
+                      {webcasts.map((webcast, i) => {
+                        const { contentCategory, contentTitle, contentDescription, contentCtaURL } = webcast.item.additionalFields;
+                        return (
+                          <GridItem
+                            role="group"
+                            position="relative"
+                            key={i}
+                            color="white"
+                            mt={[4, 0]}
+                            p={8}
+                            background="gray.700"
+                            backgroundImage="linear-gradient(rgba(0,0,0, 0.4),rgba(0,0,0, 0.7)),url(https://images.unsplash.com/photo-1497493292307-31c376b6e479?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1742&q=80)"
+                            backgroundPosition="center"
+                            backgroundSize="cover"
+                            colSpan={2}
+                            className="item"
+                            height="350px"
+                          >
+                            <Flex flexDirection="column" justifyContent="end" alignItems="start" height="100%">
+                              <Heading fontSize="xl" fontWeight="bold" lineHeight={1.5}>
+                                {contentTitle}
+                              </Heading>
+                              <Text fontSize="xs" color="gray.500" fontWeight="bold" textTransform="uppercase" letterSpacing="0.2em">
+                                {contentCategory}
+                              </Text>
+                              <Box mt={3} zIndex={100}>
+                                <Link href={contentCtaURL} isExternal transition="all 2s ease" _hover={{ textUnderline: "none" }}>
+                                  <Text
+                                    fontSize="md"
+                                    fontWeight="black"
+                                    color="teal.400"
+                                    transition="all .2s ease"
+                                    _hover={{ textDecoration: "underline", textUnderlineOffset: ".2em", color: "teal.100" }}
+                                  >
+                                    Learn more <Icon as={GoChevronRight} verticalAlign="text-bottom" />
+                                  </Text>
+                                </Link>
+                              </Box>
+                            </Flex>
+                            <Box
+                              p={8}
+                              position="absolute"
+                              top="0px"
+                              left="0px"
+                              width="100%"
+                              height="100%"
+                              transition="all 0.4s ease"
+                              color="transparent"
+                              _hover={{ background: "hsla(177, 52%, 46%, .2)", color: "gray.200" }}
+                            >
+                              <Text
+                                as="em"
+                                fontSize={["sm", "md"]}
+                                lineHeight={"2"}
+                                dangerouslySetInnerHTML={{ __html: contentDescription }}
+                                noOfLines={3}
+                                _groupHover={{ color: "teal.200" }}
+                              />
+                            </Box>
+                          </GridItem>
+                        );
+                      })}
+                    </Grid>
+                  </TabPanel>
+                  <TabPanel>
+                    <Grid display={["block", "grid"]} templateColumns="repeat(4, 1fr)" gap={5} mt={4}>
+                      {whitepapers.map((whitepaper, i) => {
+                        const { contentCategory, contentTitle, contentDescription, contentCtaURL } = whitepaper.item.additionalFields;
+                        return (
+                          <GridItem
+                            role="group"
+                            position="relative"
+                            key={i}
+                            color="white"
+                            mt={[4, 0]}
+                            p={8}
+                            background="gray.700"
+                            backgroundImage="linear-gradient(rgba(0,0,0, 0.4),rgba(0,0,0, 0.7)),url(https://images.unsplash.com/photo-1618044733300-9472054094ee?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2342&q=80)"
+                            backgroundPosition="center"
+                            backgroundSize="cover"
+                            colSpan={2}
+                            className="item"
+                            height="350px"
+                          >
+                            <Flex flexDirection="column" justifyContent="end" alignItems="start" height="100%">
+                              <Heading fontSize="xl" fontWeight="bold" lineHeight={1.5}>
+                                {contentTitle}
+                              </Heading>
+                              <Text fontSize="xs" color="gray.500" fontWeight="bold" textTransform="uppercase" letterSpacing="0.2em">
+                                {contentCategory}
+                              </Text>
+                              <Box mt={3} zIndex={100}>
+                                <Link href={contentCtaURL} isExternal transition="all 2s ease" _hover={{ textUnderline: "none" }}>
+                                  <Text
+                                    fontSize="md"
+                                    fontWeight="black"
+                                    color="teal.400"
+                                    transition="all .2s ease"
+                                    _hover={{ textDecoration: "underline", textUnderlineOffset: ".2em", color: "teal.100" }}
+                                  >
+                                    Learn more <Icon as={GoChevronRight} verticalAlign="text-bottom" />
+                                  </Text>
+                                </Link>
+                              </Box>
+                            </Flex>
+                            <Box
+                              p={8}
+                              position="absolute"
+                              top="0px"
+                              left="0px"
+                              width="100%"
+                              height="100%"
+                              transition="all 0.4s ease"
+                              color="transparent"
+                              _hover={{ background: "hsla(177, 52%, 46%, .2)", color: "gray.200" }}
+                            >
+                              <Text
+                                as="em"
+                                fontSize={["sm", "md"]}
+                                lineHeight={"2"}
+                                dangerouslySetInnerHTML={{ __html: contentDescription }}
+                                noOfLines={3}
+                                _groupHover={{ color: "teal.200" }}
+                              />
+                            </Box>
+                          </GridItem>
+                        );
+                      })}
+                    </Grid>
+                  </TabPanel>
+                  <TabPanel>
+                    <Grid display={["block", "grid"]} templateColumns="repeat(4, 1fr)" gap={5} mt={4}>
+                      {onlineConferences.map((onlineConference, i) => {
+                        const { contentCategory, contentTitle, contentDescription, contentCtaURL } = onlineConference.item.additionalFields;
+                        return (
+                          <GridItem
+                            role="group"
+                            position="relative"
+                            key={i}
+                            color="white"
+                            mt={[4, 0]}
+                            p={8}
+                            background="gray.700"
+                            backgroundImage="linear-gradient(rgba(0,0,0, 0.4),rgba(0,0,0, 0.7)),url(https://images.unsplash.com/photo-1484807352052-23338990c6c6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80)"
+                            backgroundPosition="center"
+                            backgroundSize="cover"
+                            colSpan={2}
+                            className="item"
+                            height="350px"
+                          >
+                            <Flex flexDirection="column" justifyContent="end" alignItems="start" height="100%">
+                              <Heading fontSize="xl" fontWeight="bold" lineHeight={1.5}>
+                                {contentTitle}
+                              </Heading>
+                              <Text fontSize="xs" color="gray.500" fontWeight="bold" textTransform="uppercase" letterSpacing="0.2em">
+                                {contentCategory}
+                              </Text>
+                              <Box mt={3} zIndex={100}>
+                                <Link href={contentCtaURL} isExternal transition="all 2s ease" _hover={{ textUnderline: "none" }}>
+                                  <Text
+                                    fontSize="md"
+                                    fontWeight="black"
+                                    color="teal.400"
+                                    transition="all .2s ease"
+                                    _hover={{ textDecoration: "underline", textUnderlineOffset: ".2em", color: "teal.100" }}
+                                  >
+                                    Learn more <Icon as={GoChevronRight} verticalAlign="text-bottom" />
+                                  </Text>
+                                </Link>
+                              </Box>
+                            </Flex>
+                            <Box
+                              p={8}
+                              position="absolute"
+                              top="0px"
+                              left="0px"
+                              width="100%"
+                              height="100%"
+                              transition="all 0.4s ease"
+                              color="transparent"
+                              _hover={{ background: "hsla(177, 52%, 46%, .2)", color: "gray.200" }}
+                            >
+                              <Text
+                                as="em"
+                                fontSize={["sm", "md"]}
+                                lineHeight={"2"}
+                                dangerouslySetInnerHTML={{ __html: contentDescription }}
+                                noOfLines={3}
+                                _groupHover={{ color: "teal.200" }}
+                              />
+                            </Box>
+                          </GridItem>
+                        );
+                      })}
+                    </Grid>
+                  </TabPanel>
+                </TabPanels>
+              </Tabs>
             </TabPanel>
             <TabPanel>
-              <Grid display={["block", "grid"]} templateColumns="repeat(4, 1fr)" gap={5} mt={4}>
-                {ebooks.map((ebook, i) => {
-                  const { contentTitle, contentDescription, contentCtaURL } = ebook.item.additionalFields;
-                  return (
-                    <GridItem
-                      role="group"
-                      position="relative"
-                      key={i}
-                      color="white"
-                      mt={[4, 0]}
-                      p={8}
-                      background="gray.700"
-                      backgroundImage="linear-gradient(rgba(0,0,0, 0.4),rgba(0,0,0, 0.7)),url(https://images.unsplash.com/photo-1637942695886-69c5094fb1bb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80)"
-                      backgroundPosition="center"
-                      backgroundSize="cover"
-                      colSpan={2}
-                      className="item"
-                      height="350px"
-                    >
-                      <Flex flexDirection="column" justifyContent="end" alignItems="start" height="100%">
-                        <Heading fontSize="xl" fontWeight="bold" lineHeight={1.5}>
-                          {contentTitle}
-                        </Heading>
-                        <Box mt={3} zIndex={100}>
-                          <Link href={contentCtaURL} isExternal transition="all 2s ease" _hover={{ textUnderline: "none" }}>
-                            <Text
-                              fontSize="md"
-                              fontWeight="black"
-                              color="teal.400"
-                              transition="all .2s ease"
-                              _hover={{ textDecoration: "underline", textUnderlineOffset: ".2em", color: "teal.100" }}
-                            >
-                              Learn more <Icon as={GoChevronRight} verticalAlign="text-bottom" />
-                            </Text>
-                          </Link>
-                        </Box>
-                      </Flex>
-                      <Box
-                        p={8}
-                        position="absolute"
-                        top="0px"
-                        left="0px"
-                        width="100%"
-                        height="100%"
-                        transition="all 0.4s ease"
-                        color="transparent"
-                        _hover={{ background: "hsla(177, 52%, 46%, .2)", color: "gray.200" }}
-                      >
-                        <Text
-                          as="em"
-                          fontSize={["sm", "md"]}
-                          lineHeight={"2"}
-                          dangerouslySetInnerHTML={{ __html: contentDescription }}
-                          noOfLines={3}
-                          _groupHover={{ color: "teal.200" }}
-                        />
-                      </Box>
-                    </GridItem>
-                  );
-                })}
-              </Grid>
+              <Center minHeight="400px">
+                <Text fontSize="3xl" color="white">
+                  Media Supply Chain Content Goes Here
+                </Text>
+              </Center>
             </TabPanel>
             <TabPanel>
-              <Grid display={["block", "grid"]} templateColumns="repeat(4, 1fr)" gap={5} mt={4}>
-                {webcasts.map((webcast, i) => {
-                  const { contentTitle, contentDescription, contentCtaURL } = webcast.item.additionalFields;
-                  return (
-                    <GridItem
-                      role="group"
-                      position="relative"
-                      key={i}
-                      color="white"
-                      mt={[4, 0]}
-                      p={8}
-                      background="gray.700"
-                      backgroundImage="linear-gradient(rgba(0,0,0, 0.4),rgba(0,0,0, 0.7)),url(https://images.unsplash.com/photo-1497493292307-31c376b6e479?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1742&q=80)"
-                      backgroundPosition="center"
-                      backgroundSize="cover"
-                      colSpan={2}
-                      className="item"
-                      height="350px"
-                    >
-                      <Flex flexDirection="column" justifyContent="end" alignItems="start" height="100%">
-                        <Heading fontSize="xl" fontWeight="bold" lineHeight={1.5}>
-                          {contentTitle}
-                        </Heading>
-                        <Box mt={3} zIndex={100}>
-                          <Link href={contentCtaURL} isExternal transition="all 2s ease" _hover={{ textUnderline: "none" }}>
-                            <Text
-                              fontSize="md"
-                              fontWeight="black"
-                              color="teal.400"
-                              transition="all .2s ease"
-                              _hover={{ textDecoration: "underline", textUnderlineOffset: ".2em", color: "teal.100" }}
-                            >
-                              Learn more <Icon as={GoChevronRight} verticalAlign="text-bottom" />
-                            </Text>
-                          </Link>
-                        </Box>
-                      </Flex>
-                      <Box
-                        p={8}
-                        position="absolute"
-                        top="0px"
-                        left="0px"
-                        width="100%"
-                        height="100%"
-                        transition="all 0.4s ease"
-                        color="transparent"
-                        _hover={{ background: "hsla(177, 52%, 46%, .2)", color: "gray.200" }}
-                      >
-                        <Text
-                          as="em"
-                          fontSize={["sm", "md"]}
-                          lineHeight={"2"}
-                          dangerouslySetInnerHTML={{ __html: contentDescription }}
-                          noOfLines={3}
-                          _groupHover={{ color: "teal.200" }}
-                        />
-                      </Box>
-                    </GridItem>
-                  );
-                })}
-              </Grid>
+              <Center minHeight="400px">
+                <Text fontSize="3xl" color="white">
+                  Broadcast Content Goes Here
+                </Text>
+              </Center>
             </TabPanel>
             <TabPanel>
               <Center minHeight="400px">

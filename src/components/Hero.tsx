@@ -22,6 +22,9 @@ const Hero = () => {
                 Lorem ipsum dolor sit amet sadipscing elitr sed
               </Heading>
             </Box>
+            <Text fontSize="xs" color="gray.500" fontWeight="bold" textTransform="uppercase" letterSpacing="0.2em">
+              E-Book
+            </Text>
             <Box mt={3}>
               <Link href="#" isExternal transition="all 2s ease" _hover={{ textUnderline: "none" }}>
                 <Text
@@ -53,6 +56,9 @@ const Hero = () => {
             <Heading fontSize="xl" fontWeight="bold" color="white" lineHeight={1.5}>
               Lorem ipsum dolor sit amet consetetur sadipscing.
             </Heading>
+            <Text fontSize="xs" color="gray.500" fontWeight="bold" textTransform="uppercase" letterSpacing="0.2em">
+              E-Book
+            </Text>
             <Box mt={3}>
               <Link href="#" isExternal transition="all 2s ease" _hover={{ textUnderline: "none" }}>
                 <Text
@@ -84,6 +90,9 @@ const Hero = () => {
             <Heading fontSize="xl" fontWeight="bold" color="white" lineHeight={1.5}>
               Lorem ipsum dolor sit amet consetetur sadipscing.
             </Heading>
+            <Text fontSize="xs" color="gray.500" fontWeight="bold" textTransform="uppercase" letterSpacing="0.2em">
+              E-Book
+            </Text>
             <Box mt={3}>
               <Link href="#" isExternal transition="all 2s ease" _hover={{ textUnderline: "none" }}>
                 <Text
