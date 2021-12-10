@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import Hero from "./components/Hero";
 import {
   Box,
+  Button,
   Circle,
   Center,
   Container,
@@ -143,38 +144,38 @@ function App() {
           </TabList>
 
           <TabPanels>
-            <TabPanel>
+            <TabPanel px={0}>
               <Tabs size="sm" variant="soft-rounded">
-                <TabList>
-                  <Tab color="gray.200" _selected={{ background: "teal.600" }}>
+                <TabList flexWrap="wrap">
+                  <Tab textTransform="uppercase" fontSize="xs" px={2} borderRadius="lg" color="gray.200" _selected={{ background: "teal.600" }}>
                     <Circle size="25px" color="gray.300" bg="teal.700" mr="2">
                       <Text fontSize="xs"> {all.length}</Text>
                     </Circle>
-                    All
+                    all
                   </Tab>
-                  <Tab color="gray.200" _selected={{ background: "teal.600" }}>
+                  <Tab textTransform="uppercase" fontSize="xs" px={2} borderRadius="lg" color="gray.200" _selected={{ background: "teal.600" }}>
                     <Circle size="25px" color="gray.300" bg="teal.700" mr="2">
                       <Text fontSize="xs"> {ebooks.length}</Text>
                     </Circle>
-                    E-Books
+                    ebooks
                   </Tab>
-                  <Tab color="gray.200" _selected={{ background: "teal.600" }}>
+                  <Tab textTransform="uppercase" fontSize="xs" px={2} borderRadius="lg" color="gray.200" _selected={{ background: "teal.600" }}>
                     <Circle size="25px" color="gray.300" bg="teal.700" mr="2">
                       <Text fontSize="xs"> {webcasts.length}</Text>
                     </Circle>
-                    Webcasts
+                    webcasts
                   </Tab>
-                  <Tab color="gray.200" _selected={{ background: "teal.600" }}>
+                  <Tab textTransform="uppercase" fontSize="xs" px={2} borderRadius="lg" color="gray.200" _selected={{ background: "teal.600" }}>
                     <Circle size="25px" color="gray.300" bg="teal.700" mr="2">
                       <Text fontSize="xs"> {whitepapers.length}</Text>
                     </Circle>
-                    White Papers
+                    whitepapers
                   </Tab>
-                  <Tab color="gray.200" _selected={{ background: "teal.600" }}>
+                  <Tab textTransform="uppercase" fontSize="xs" px={2} borderRadius="lg" color="gray.200" _selected={{ background: "teal.600" }}>
                     <Circle size="25px" color="gray.300" bg="teal.700" mr="2">
                       <Text fontSize="xs"> {onlineConferences.length}</Text>
                     </Circle>
-                    Online Conferences
+                    conferences
                   </Tab>
                 </TabList>
                 <TabPanels>
@@ -197,6 +198,7 @@ function App() {
                             colSpan={2}
                             className="item"
                             height="350px"
+                            boxShadow="lg"
                           >
                             <Flex flexDirection="column" justifyContent="end" alignItems="start" height="100%">
                               <Heading fontSize="xl" fontWeight="bold" lineHeight={1.5}>
@@ -263,6 +265,7 @@ function App() {
                             colSpan={2}
                             className="item"
                             height="350px"
+                            boxShadow="lg"
                           >
                             <Flex flexDirection="column" justifyContent="end" alignItems="start" height="100%">
                               <Heading fontSize="xl" fontWeight="bold" lineHeight={1.5}>
@@ -329,6 +332,7 @@ function App() {
                             colSpan={2}
                             className="item"
                             height="350px"
+                            boxShadow="lg"
                           >
                             <Flex flexDirection="column" justifyContent="end" alignItems="start" height="100%">
                               <Heading fontSize="xl" fontWeight="bold" lineHeight={1.5}>
@@ -395,6 +399,7 @@ function App() {
                             colSpan={2}
                             className="item"
                             height="350px"
+                            boxShadow="lg"
                           >
                             <Flex flexDirection="column" justifyContent="end" alignItems="start" height="100%">
                               <Heading fontSize="xl" fontWeight="bold" lineHeight={1.5}>
@@ -461,6 +466,7 @@ function App() {
                             colSpan={2}
                             className="item"
                             height="350px"
+                            boxShadow="lg"
                           >
                             <Flex flexDirection="column" justifyContent="end" alignItems="start" height="100%">
                               <Heading fontSize="xl" fontWeight="bold" lineHeight={1.5}>
@@ -548,7 +554,7 @@ function App() {
         background="gray.700"
         mt={20}
         py={14}
-        backgroundImage="https://images.unsplash.com/photo-1558811916-51c8d56d29c6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
+        backgroundImage="linear-gradient(rgba(0,0,0, 0.7),rgba(0,0,0, 0.7)),url(https://images.unsplash.com/photo-1613031729579-ace1feefda4c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80)"
         backgroundPosition="center"
         backgroundSize="cover"
       >
@@ -561,6 +567,9 @@ function App() {
             voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus et Lorem ipsum dolor sit amet.
             Lrem ipsum dolor sit amet sed diam nonumy.
           </Text>
+          <Button mt={8} size="sm" colorScheme="teal" borderRadius="sm">
+            CTA Text Goes Here
+          </Button>
         </Box>
       </Container>
     </Layout>
