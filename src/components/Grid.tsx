@@ -67,14 +67,14 @@ const ContentGrid = ({ collection, image }: { collection: any[]; image: string }
                   left="0px"
                   width="100%"
                   height="100%"
-                  transition="all 0.4s ease"
+                  transition="all 0.4s ease-out"
                   color="transparent"
-                  transform="translateX(-100%)"
+                  transform="translateX(-100%) translateY(-100%)"
                   opacity={0}
                   _groupHover={{
                     backgroundImage: "linear-gradient(rgba(0, 0, 0, 1), rgba(56, 178, 172, 0.5))",
                     color: "gray.200",
-                    transform: "translateX(0)",
+                    transform: "translateX(0) translateY(0)",
                     opacity: "1",
                   }}
                 >
@@ -85,7 +85,7 @@ const ContentGrid = ({ collection, image }: { collection: any[]; image: string }
                     lineHeight={"2"}
                     dangerouslySetInnerHTML={{ __html: contentDescription }}
                     noOfLines={3}
-                    _groupHover={{ color: "gray.!00" }}
+                    _groupHover={{ color: "teal.200" }}
                   />
                 </Box>
               </Box>
