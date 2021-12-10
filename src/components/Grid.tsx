@@ -48,6 +48,7 @@ const ContentGrid = ({ collection, image }: { collection: any[]; image: string }
                     </Text>
                     <Link href={contentCtaURL} isExternal transition="all 2s ease" _hover={{ textUnderline: "none" }}>
                       <Text
+                        display="inline-block"
                         fontSize="md"
                         fontWeight="black"
                         color="teal.400"
