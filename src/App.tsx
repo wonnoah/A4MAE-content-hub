@@ -146,32 +146,32 @@ function App() {
           <TabPanels>
             <TabPanel px={0}>
               <Tabs size="sm" variant="soft-rounded">
-                <TabList flexWrap="wrap">
-                  <Tab textTransform="uppercase" fontSize="xs" px={2} borderRadius="lg" color="gray.200" _selected={{ background: "teal.600" }}>
+                <TabList flexWrap="wrap" px={4}>
+                  <Tab textTransform="uppercase" fontSize="xs" px={2} m={1} borderRadius="lg" color="gray.200" _selected={{ background: "teal.600" }}>
                     <Circle size="25px" color="gray.300" bg="teal.700" mr="2">
                       <Text fontSize="xs"> {all.length}</Text>
                     </Circle>
                     all
                   </Tab>
-                  <Tab textTransform="uppercase" fontSize="xs" px={2} borderRadius="lg" color="gray.200" _selected={{ background: "teal.600" }}>
+                  <Tab textTransform="uppercase" fontSize="xs" px={2} m={1} borderRadius="lg" color="gray.200" _selected={{ background: "teal.600" }}>
                     <Circle size="25px" color="gray.300" bg="teal.700" mr="2">
                       <Text fontSize="xs"> {ebooks.length}</Text>
                     </Circle>
                     ebooks
                   </Tab>
-                  <Tab textTransform="uppercase" fontSize="xs" px={2} borderRadius="lg" color="gray.200" _selected={{ background: "teal.600" }}>
+                  <Tab textTransform="uppercase" fontSize="xs" px={2} m={1} borderRadius="lg" color="gray.200" _selected={{ background: "teal.600" }}>
                     <Circle size="25px" color="gray.300" bg="teal.700" mr="2">
                       <Text fontSize="xs"> {webcasts.length}</Text>
                     </Circle>
                     webcasts
                   </Tab>
-                  <Tab textTransform="uppercase" fontSize="xs" px={2} borderRadius="lg" color="gray.200" _selected={{ background: "teal.600" }}>
+                  <Tab textTransform="uppercase" fontSize="xs" px={2} m={1} borderRadius="lg" color="gray.200" _selected={{ background: "teal.600" }}>
                     <Circle size="25px" color="gray.300" bg="teal.700" mr="2">
                       <Text fontSize="xs"> {whitepapers.length}</Text>
                     </Circle>
                     whitepapers
                   </Tab>
-                  <Tab textTransform="uppercase" fontSize="xs" px={2} borderRadius="lg" color="gray.200" _selected={{ background: "teal.600" }}>
+                  <Tab textTransform="uppercase" fontSize="xs" px={2} m={1} borderRadius="lg" color="gray.200" _selected={{ background: "teal.600" }}>
                     <Circle size="25px" color="gray.300" bg="teal.700" mr="2">
                       <Text fontSize="xs"> {onlineConferences.length}</Text>
                     </Circle>
@@ -192,7 +192,7 @@ function App() {
                             mt={[4, 0]}
                             p={8}
                             background="gray.700"
-                            backgroundImage="linear-gradient(rgba(0,0,0, 0.4),rgba(0,0,0, 0.7)),url(https://images.unsplash.com/photo-1523961131990-5ea7c61b2107?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80)"
+                            backgroundImage="linear-gradient(rgba(0,0,0,0.25),rgba(0,0,0,0.75),rgba(0,0,0,1)),url(https://images.unsplash.com/photo-1523961131990-5ea7c61b2107?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80)"
                             backgroundPosition="center"
                             backgroundSize="cover"
                             colSpan={2}
@@ -201,13 +201,13 @@ function App() {
                             boxShadow="lg"
                           >
                             <Flex flexDirection="column" justifyContent="end" alignItems="start" height="100%">
-                              <Heading fontSize="xl" fontWeight="bold" lineHeight={1.5}>
-                                {contentTitle}
-                              </Heading>
-                              <Text fontSize="xs" color="gray.500" fontWeight="bold" textTransform="uppercase" letterSpacing="0.2em">
-                                {contentCategory}
-                              </Text>
                               <Box mt={3} zIndex={100}>
+                                <Heading fontSize="xl" fontWeight="bold" lineHeight={1.5}>
+                                  {contentTitle}
+                                </Heading>
+                                <Text fontSize="xs" color="gray.500" fontWeight="bold" textTransform="uppercase" letterSpacing="0.2em">
+                                  {contentCategory}
+                                </Text>
                                 <Link href={contentCtaURL} isExternal transition="all 2s ease" _hover={{ textUnderline: "none" }}>
                                   <Text
                                     fontSize="md"
@@ -230,7 +230,8 @@ function App() {
                               height="100%"
                               transition="all 0.4s ease"
                               color="transparent"
-                              _hover={{ background: "hsla(177, 52%, 46%, .2)", color: "gray.200" }}
+                              _hover={{ backgroundImage: "linear-gradient(hsla(177, 52%, 46%, 0.2),hsla(177, 52%, 46%, 0.5))", color: "gray.200" }}
+                              // _hover={{ backgroundImage: "hsla(177, 52%, 46%, 0.5)", color: "gray.200" }}
                             >
                               <Text
                                 as="em"
@@ -259,7 +260,7 @@ function App() {
                             mt={[4, 0]}
                             p={8}
                             background="gray.700"
-                            backgroundImage="linear-gradient(rgba(0,0,0, 0.4),rgba(0,0,0, 0.7)),url(https://images.unsplash.com/photo-1637942695886-69c5094fb1bb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80)"
+                            backgroundImage="linear-gradient(rgba(0,0,0,0.25),rgba(0,0,0,0.75),rgba(0,0,0,1)),url(https://images.unsplash.com/photo-1637942695886-69c5094fb1bb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80)"
                             backgroundPosition="center"
                             backgroundSize="cover"
                             colSpan={2}
@@ -268,13 +269,13 @@ function App() {
                             boxShadow="lg"
                           >
                             <Flex flexDirection="column" justifyContent="end" alignItems="start" height="100%">
-                              <Heading fontSize="xl" fontWeight="bold" lineHeight={1.5}>
-                                {contentTitle}
-                              </Heading>
-                              <Text fontSize="xs" color="gray.500" fontWeight="bold" textTransform="uppercase" letterSpacing="0.2em">
-                                {contentCategory}
-                              </Text>
                               <Box mt={3} zIndex={100}>
+                                <Heading fontSize="xl" fontWeight="bold" lineHeight={1.5}>
+                                  {contentTitle}
+                                </Heading>
+                                <Text fontSize="xs" color="gray.500" fontWeight="bold" textTransform="uppercase" letterSpacing="0.2em">
+                                  {contentCategory}
+                                </Text>
                                 <Link href={contentCtaURL} isExternal transition="all 2s ease" _hover={{ textUnderline: "none" }}>
                                   <Text
                                     fontSize="md"
@@ -297,7 +298,7 @@ function App() {
                               height="100%"
                               transition="all 0.4s ease"
                               color="transparent"
-                              _hover={{ background: "hsla(177, 52%, 46%, .2)", color: "gray.200" }}
+                              _hover={{ background: "hsla(177, 52%, 46%, 0.5)", color: "gray.200" }}
                             >
                               <Text
                                 as="em"
@@ -326,7 +327,7 @@ function App() {
                             mt={[4, 0]}
                             p={8}
                             background="gray.700"
-                            backgroundImage="linear-gradient(rgba(0,0,0, 0.4),rgba(0,0,0, 0.7)),url(https://images.unsplash.com/photo-1497493292307-31c376b6e479?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1742&q=80)"
+                            backgroundImage="linear-gradient(rgba(0,0,0,0.25),rgba(0,0,0,0.75),rgba(0,0,0,1)),url(https://images.unsplash.com/photo-1497493292307-31c376b6e479?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1742&q=80)"
                             backgroundPosition="center"
                             backgroundSize="cover"
                             colSpan={2}
@@ -335,13 +336,13 @@ function App() {
                             boxShadow="lg"
                           >
                             <Flex flexDirection="column" justifyContent="end" alignItems="start" height="100%">
-                              <Heading fontSize="xl" fontWeight="bold" lineHeight={1.5}>
-                                {contentTitle}
-                              </Heading>
-                              <Text fontSize="xs" color="gray.500" fontWeight="bold" textTransform="uppercase" letterSpacing="0.2em">
-                                {contentCategory}
-                              </Text>
                               <Box mt={3} zIndex={100}>
+                                <Heading fontSize="xl" fontWeight="bold" lineHeight={1.5}>
+                                  {contentTitle}
+                                </Heading>
+                                <Text fontSize="xs" color="gray.500" fontWeight="bold" textTransform="uppercase" letterSpacing="0.2em">
+                                  {contentCategory}
+                                </Text>
                                 <Link href={contentCtaURL} isExternal transition="all 2s ease" _hover={{ textUnderline: "none" }}>
                                   <Text
                                     fontSize="md"
@@ -364,7 +365,7 @@ function App() {
                               height="100%"
                               transition="all 0.4s ease"
                               color="transparent"
-                              _hover={{ background: "hsla(177, 52%, 46%, .2)", color: "gray.200" }}
+                              _hover={{ background: "hsla(177, 52%, 46%, 0.5)", color: "gray.200" }}
                             >
                               <Text
                                 as="em"
@@ -393,7 +394,7 @@ function App() {
                             mt={[4, 0]}
                             p={8}
                             background="gray.700"
-                            backgroundImage="linear-gradient(rgba(0,0,0, 0.4),rgba(0,0,0, 0.7)),url(https://images.unsplash.com/photo-1618044733300-9472054094ee?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2342&q=80)"
+                            backgroundImage="linear-gradient(rgba(0,0,0,0.25),rgba(0,0,0,0.75),rgba(0,0,0,1)),url(https://images.unsplash.com/photo-1618044733300-9472054094ee?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2342&q=80)"
                             backgroundPosition="center"
                             backgroundSize="cover"
                             colSpan={2}
@@ -402,13 +403,13 @@ function App() {
                             boxShadow="lg"
                           >
                             <Flex flexDirection="column" justifyContent="end" alignItems="start" height="100%">
-                              <Heading fontSize="xl" fontWeight="bold" lineHeight={1.5}>
-                                {contentTitle}
-                              </Heading>
-                              <Text fontSize="xs" color="gray.500" fontWeight="bold" textTransform="uppercase" letterSpacing="0.2em">
-                                {contentCategory}
-                              </Text>
                               <Box mt={3} zIndex={100}>
+                                <Heading fontSize="xl" fontWeight="bold" lineHeight={1.5}>
+                                  {contentTitle}
+                                </Heading>
+                                <Text fontSize="xs" color="gray.500" fontWeight="bold" textTransform="uppercase" letterSpacing="0.2em">
+                                  {contentCategory}
+                                </Text>
                                 <Link href={contentCtaURL} isExternal transition="all 2s ease" _hover={{ textUnderline: "none" }}>
                                   <Text
                                     fontSize="md"
@@ -431,7 +432,7 @@ function App() {
                               height="100%"
                               transition="all 0.4s ease"
                               color="transparent"
-                              _hover={{ background: "hsla(177, 52%, 46%, .2)", color: "gray.200" }}
+                              _hover={{ background: "hsla(177, 52%, 46%, 0.5)", color: "gray.200" }}
                             >
                               <Text
                                 as="em"
@@ -460,7 +461,7 @@ function App() {
                             mt={[4, 0]}
                             p={8}
                             background="gray.700"
-                            backgroundImage="linear-gradient(rgba(0,0,0, 0.4),rgba(0,0,0, 0.7)),url(https://images.unsplash.com/photo-1484807352052-23338990c6c6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80)"
+                            backgroundImage="linear-gradient(rgba(0,0,0,0.25),rgba(0,0,0,0.75),rgba(0,0,0,1)),url(https://images.unsplash.com/photo-1484807352052-23338990c6c6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80)"
                             backgroundPosition="center"
                             backgroundSize="cover"
                             colSpan={2}
@@ -469,13 +470,13 @@ function App() {
                             boxShadow="lg"
                           >
                             <Flex flexDirection="column" justifyContent="end" alignItems="start" height="100%">
-                              <Heading fontSize="xl" fontWeight="bold" lineHeight={1.5}>
-                                {contentTitle}
-                              </Heading>
-                              <Text fontSize="xs" color="gray.500" fontWeight="bold" textTransform="uppercase" letterSpacing="0.2em">
-                                {contentCategory}
-                              </Text>
                               <Box mt={3} zIndex={100}>
+                                <Heading fontSize="xl" fontWeight="bold" lineHeight={1.5}>
+                                  {contentTitle}
+                                </Heading>
+                                <Text fontSize="xs" color="gray.500" fontWeight="bold" textTransform="uppercase" letterSpacing="0.2em">
+                                  {contentCategory}
+                                </Text>
                                 <Link href={contentCtaURL} isExternal transition="all 2s ease" _hover={{ textUnderline: "none" }}>
                                   <Text
                                     fontSize="md"
@@ -498,7 +499,7 @@ function App() {
                               height="100%"
                               transition="all 0.4s ease"
                               color="transparent"
-                              _hover={{ background: "hsla(177, 52%, 46%, .2)", color: "gray.200" }}
+                              _hover={{ background: "hsla(177, 52%, 46%, 0.4)", color: "gray.200" }}
                             >
                               <Text
                                 as="em"
