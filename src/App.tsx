@@ -238,6 +238,8 @@ function App() {
         backgroundImage="linear-gradient(rgba(0,0,0, 0.7),rgba(0,0,0, 0.7)),url(https://images.unsplash.com/photo-1613031729579-ace1feefda4c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80)"
         backgroundPosition="center"
         backgroundSize="cover"
+        backgroundAttachment="fixed"
+        backgroundRepeat="no-repeat"
       >
         <Box maxWidth="1200px" textAlign="center" color="white" p={[4, 20]} mx="auto">
           <Heading fontSize={["2xl", "3xl"]} fontWeight="black">

@@ -30,14 +30,19 @@ const ContentGrid = ({ collection, image }: { collection: any[]; image: string }
         return (
           <GridItem role="group" position="relative" key={i} color="white" mt={[4, 0]} boxShadow="lg" className="item" overflow="hidden">
             <FadeIn>
-              <Box
-                p={8}
-                height="350px"
-                background="gray.700"
-                backgroundImage={`linear-gradient(rgba(0,0,0,0.25),rgba(0,0,0,0.75),rgba(0,0,0,1)),url("${collectionImage(image)}")`}
-                backgroundPosition="center"
-                backgroundSize="cover"
-              >
+              <Box p={8} height="350px" background="gray.700">
+                <Box
+                  position="absolute"
+                  top="0px"
+                  left="0px"
+                  width="100%"
+                  height="100%"
+                  backgroundImage={`linear-gradient(rgba(0,0,0,0.25),rgba(0,0,0,0.75),rgba(0,0,0,1)),url("${collectionImage(image)}")`}
+                  backgroundPosition="center"
+                  backgroundSize="cover"
+                  transition="all 0.4s ease-out"
+                  _groupHover={{ transform: "scale(1.2) rotate(4deg)" }}
+                />
                 <Flex flexDirection="column" justifyContent="end" alignItems="start" height="100%">
                   <Box mt={3} zIndex={100}>
                     <Heading fontSize="xl" fontWeight="bold" lineHeight={1.5}>
@@ -70,12 +75,12 @@ const ContentGrid = ({ collection, image }: { collection: any[]; image: string }
                   height="100%"
                   transition="all 0.4s ease-out"
                   color="transparent"
-                  transform="translateX(-100%) translateY(-100%)"
+                  transform="translateY(100%)"
                   opacity={0}
                   _groupHover={{
                     backgroundImage: "linear-gradient(rgba(0, 0, 0, 1), rgba(56, 178, 172, 0.5))",
                     color: "gray.200",
-                    transform: "translateX(0) translateY(0)",
+                    transform: "translateY(0)",
                     opacity: "1",
                   }}
                 >
@@ -86,7 +91,7 @@ const ContentGrid = ({ collection, image }: { collection: any[]; image: string }
                     lineHeight={"2"}
                     dangerouslySetInnerHTML={{ __html: contentDescription }}
                     noOfLines={3}
-                    _groupHover={{ color: "teal.200" }}
+                    _groupHover={{ color: "gray.300" }}
                   />
                 </Box>
               </Box>

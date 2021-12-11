@@ -1,34 +1,36 @@
-import { useState } from "react";
-import { Box, Container, Heading, Icon, Link, Grid, GridItem, Text } from "@chakra-ui/react";
+import { Box, Container, Heading, Flex, Icon, Link, Grid, GridItem, Text } from "@chakra-ui/react";
 import { GoChevronRight } from "react-icons/go";
+import { FadeIn } from "./FadeIn";
 
 const Hero = () => {
   return (
-    <Box>
+    <FadeIn>
       <Grid display={["block", "grid"]} templateColumns="2fr 1fr">
         <GridItem
+          role="group"
+          position="relative"
           rowSpan={2}
-          background="gray.800"
-          backgroundImage="linear-gradient(rgba(0,0,0, 0.4),rgba(0,0,0, 0.7)),url(https://images.unsplash.com/photo-1507874457470-272b3c8d8ee2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80)"
-          backgroundPosition="center"
-          backgroundSize="cover"
-          minHeight="400px"
+          display="flex"
+          flexDirection="column"
+          justifyContent="center"
+          minHeight="50vh"
           p={[6]}
-          py={[24]}
+          overflow="hidden"
         >
-          <Container>
-            <Box>
-              <Heading fontWeight="black" color="white">
-                Lorem ipsum dolor sit amet sadipscing elitr sed
-              </Heading>
-            </Box>
-            <Text fontSize="xs" color="gray.500" fontWeight="bold" textTransform="uppercase" letterSpacing="0.2em">
+          <Container zIndex={100}>
+            <Heading fontWeight="black" fontSize={["3xl", "5xl"]} color="white">
+              Lorem ipsum dolor sit amet sadipscing elitr sed
+            </Heading>
+
+            <Text fontSize={["sm", "lg"]} color="gray.500" fontWeight="bold" textTransform="uppercase" letterSpacing="0.2em">
               E-Book
             </Text>
+
             <Box mt={3}>
               <Link href="#" isExternal transition="all 2s ease" _hover={{ textUnderline: "none" }}>
                 <Text
-                  fontSize="md"
+                  as="span"
+                  fontSize={["md", "lg"]}
                   fontWeight="black"
                   color="teal.400"
                   transition="all .2s ease"
@@ -39,20 +41,59 @@ const Hero = () => {
               </Link>
             </Box>
           </Container>
+          <Box
+            position="absolute"
+            top="0px"
+            left="0px"
+            width="100%"
+            height="100%"
+            background="gray.800"
+            backgroundImage="linear-gradient(rgba(0,0,0, 0.4),rgba(0,0,0, 0.7)),url(https://images.unsplash.com/photo-1507874457470-272b3c8d8ee2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80)"
+            backgroundPosition="center"
+            backgroundSize="cover"
+            transition="all 1.4s ease-out"
+            _groupHover={{ transform: "scale(1.1) rotate(-2deg)" }}
+          />
+          <Box
+            p={8}
+            position="absolute"
+            bottom="0px"
+            left="0px"
+            width="100%"
+            transition="all 0.4s ease-out"
+            color="transparent"
+            transform="translateY(100%)"
+            opacity={0}
+            borderTop="1px solid rgba(56, 178, 172)"
+            overflow="hidden"
+            _groupHover={{
+              backgroundImage: "linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 1))",
+              color: "gray.200",
+              transform: "translateY(0)",
+              opacity: "1",
+            }}
+          >
+            <Text fontSize={["sm"]} fontWeight="bold" letterSpacing="0.15em" lineHeight={"2"} noOfLines={3} _groupHover={{ color: "gray.300" }}>
+              Description of asset goes here. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+              dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
+              sanctus et Lorem ipsum dolor sit amet. Lrem ipsum dolor sit amet sed diam nonumy.
+            </Text>
+          </Box>
         </GridItem>
+
         <GridItem
+          role="group"
+          position="relative"
           display="flex"
           justifyContent="start"
           alignItems="end"
-          minHeight="250px"
+          minHeight="300px"
           bg="gray.600"
-          backgroundImage="linear-gradient(rgba(0,0,0, 0.4),rgba(0,0,0, 0.7)),url(https://images.unsplash.com/photo-1587893904933-5b23fefaea6d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80)"
-          backgroundPosition="center"
-          backgroundSize="cover"
           mt={[4, 0]}
           p={6}
+          overflow="hidden"
         >
-          <Container maxWidth={["100%", "75%"]} ml={0}>
+          <Container zIndex={100} maxWidth={["100%", "75%"]} ml={0}>
             <Heading fontSize="xl" fontWeight="bold" color="white" lineHeight={1.5}>
               Lorem ipsum dolor sit amet consetetur sadipscing.
             </Heading>
@@ -62,6 +103,7 @@ const Hero = () => {
             <Box mt={3}>
               <Link href="#" isExternal transition="all 2s ease" _hover={{ textUnderline: "none" }}>
                 <Text
+                  as="span"
                   fontSize="md"
                   fontWeight="black"
                   color="teal.400"
@@ -73,20 +115,59 @@ const Hero = () => {
               </Link>
             </Box>
           </Container>
+          <Box
+            position="absolute"
+            top="0px"
+            left="0px"
+            width="100%"
+            height="100%"
+            background="gray.800"
+            backgroundImage="linear-gradient(rgba(0,0,0, 0.4),rgba(0,0,0, 0.7)),url(https://images.unsplash.com/photo-1587893904933-5b23fefaea6d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80)"
+            backgroundPosition="center"
+            backgroundSize="cover"
+            transition="all 1.4s ease-out"
+            _groupHover={{ transform: "scale(1.1) rotate(-2deg)" }}
+          />
+          <Box
+            p={8}
+            py={2}
+            position="absolute"
+            top="0px"
+            left="0px"
+            width="100%"
+            transition="all 0.4s ease-out"
+            color="transparent"
+            transform="translateY(-100%)"
+            opacity={0}
+            borderBottom="1px solid rgba(56, 178, 172)"
+            overflow="hidden"
+            _groupHover={{
+              backgroundImage: "linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 1))",
+              color: "gray.200",
+              transform: "translateY(0)",
+              opacity: "1",
+            }}
+          >
+            <Text fontSize={["xs"]} fontWeight="bold" letterSpacing="0.15em" lineHeight={"1.8"} noOfLines={2} _groupHover={{ color: "gray.300" }}>
+              Description of asset goes here. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+              dolore magna aliquyam erat, sed diam voluptua.
+            </Text>
+          </Box>
         </GridItem>
+
         <GridItem
+          role="group"
+          position="relative"
           display="flex"
           justifyContent="start"
           alignItems="end"
-          minHeight="250px"
+          minHeight="300px"
           bg="gray.700"
-          backgroundImage="linear-gradient(rgba(0,0,0, 0.4),rgba(0,0,0, 0.7)),url(https://images.unsplash.com/photo-1598387992619-f86d5293bace?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1752&q=80)"
-          backgroundPosition="center"
-          backgroundSize="cover"
           mt={[4, 0]}
           p={6}
+          overflow="hidden"
         >
-          <Container maxWidth={["100%", "75%"]} ml={0}>
+          <Container zIndex={100} maxWidth={["100%", "75%"]} ml={0}>
             <Heading fontSize="xl" fontWeight="bold" color="white" lineHeight={1.5}>
               Lorem ipsum dolor sit amet consetetur sadipscing.
             </Heading>
@@ -96,6 +177,7 @@ const Hero = () => {
             <Box mt={3}>
               <Link href="#" isExternal transition="all 2s ease" _hover={{ textUnderline: "none" }}>
                 <Text
+                  as="span"
                   fontSize="md"
                   fontWeight="black"
                   color="teal.400"
@@ -107,9 +189,46 @@ const Hero = () => {
               </Link>
             </Box>
           </Container>
+          <Box
+            position="absolute"
+            top="0px"
+            left="0px"
+            width="100%"
+            height="100%"
+            background="gray.800"
+            backgroundImage="linear-gradient(rgba(0,0,0, 0.4),rgba(0,0,0, 0.7)),url(https://images.unsplash.com/photo-1598387992619-f86d5293bace?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1752&q=80)"
+            backgroundPosition="center"
+            backgroundSize="cover"
+            transition="all 1.4s ease-out"
+            _groupHover={{ transform: "scale(1.1) rotate(-2deg)" }}
+          />
+          <Box
+            p={8}
+            py={2}
+            position="absolute"
+            top="0px"
+            left="0px"
+            width="100%"
+            transition="all 0.4s ease-out"
+            color="transparent"
+            transform="translateY(-100%)"
+            opacity={0}
+            borderBottom="1px solid rgba(56, 178, 172)"
+            overflow="hidden"
+            _groupHover={{
+              backgroundImage: "linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 1))",
+              color: "gray.200",
+              transform: "translateY(0)",
+              opacity: "1",
+            }}
+          >
+            <Text fontSize={["xs"]} fontWeight="bold" letterSpacing="0.15em" lineHeight={"1.8"} noOfLines={2} _groupHover={{ color: "gray.300" }}>
+              Description of asset goes here. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut.
+            </Text>
+          </Box>
         </GridItem>
       </Grid>
-    </Box>
+    </FadeIn>
   );
 };
 
