@@ -180,19 +180,19 @@ function App() {
                   </Tab>
                 </TabList>
                 <TabPanels>
-                  <TabPanel>
+                  <TabPanel py={0}>
                     <ContentGrid collection={all} image="all" />
                   </TabPanel>
-                  <TabPanel>
+                  <TabPanel py={0}>
                     <ContentGrid collection={ebooks} image="ebooks" />
                   </TabPanel>
-                  <TabPanel>
+                  <TabPanel py={0}>
                     <ContentGrid collection={webcasts} image="webcasts" />
                   </TabPanel>
-                  <TabPanel>
+                  <TabPanel py={0}>
                     <ContentGrid collection={whitepapers} image="whitepapers" />
                   </TabPanel>
-                  <TabPanel>
+                  <TabPanel py={0}>
                     <ContentGrid collection={onlineConferences} image="onlineConferences" />
                   </TabPanel>
                 </TabPanels>
