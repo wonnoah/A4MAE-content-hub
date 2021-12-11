@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Layout from "./components/Layout";
 import Hero from "./components/Hero";
-import ContentGrid from "./components/ContentGrid";
+import Grid from "./components/Grid";
 import { Box, Button, Circle, Center, Container, Heading, Tabs, TabList, TabPanels, Tab, TabPanel, Text } from "@chakra-ui/react";
 
 // Adobe XD: https://xd.adobe.com/view/20ffd87b-1008-4d82-bc49-2e39c3cb2b1d-75ac/
@@ -178,27 +178,27 @@ function App() {
                 <TabPanels>
                   {/* content production all content */}
                   <TabPanel py={0}>
-                    <ContentGrid collection={all} image="all" />
+                    <Grid collection={all} image="all" />
                   </TabPanel>
 
                   {/* content production ebooks content */}
                   <TabPanel py={0}>
-                    <ContentGrid collection={ebooks} image="ebooks" />
+                    <Grid collection={ebooks} image="ebooks" />
                   </TabPanel>
 
                   {/* content production webcasts content */}
                   <TabPanel py={0}>
-                    <ContentGrid collection={webcasts} image="webcasts" />
+                    <Grid collection={webcasts} image="webcasts" />
                   </TabPanel>
 
                   {/* content production whitepapers content */}
                   <TabPanel py={0}>
-                    <ContentGrid collection={whitepapers} image="whitepapers" />
+                    <Grid collection={whitepapers} image="whitepapers" />
                   </TabPanel>
 
                   {/* content production conferences content */}
                   <TabPanel py={0}>
-                    <ContentGrid collection={onlineConferences} image="onlineConferences" />
+                    <Grid collection={onlineConferences} image="onlineConferences" />
                   </TabPanel>
                 </TabPanels>
               </Tabs>
