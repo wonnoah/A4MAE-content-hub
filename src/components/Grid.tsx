@@ -78,7 +78,7 @@ const ContentGrid = ({ collection, image }: { collection: any[]; image: string }
                   transform="translateY(100%)"
                   opacity={0}
                   _groupHover={{
-                    backgroundImage: "linear-gradient(rgba(0, 0, 0, 1), rgba(56, 178, 172, 0.5))",
+                    backgroundImage: "linear-gradient(rgba(0, 0, 0, 75%), rgba(56, 178, 172, 0.4))",
                     color: "gray.200",
                     transform: "translateY(0)",
                     opacity: "1",

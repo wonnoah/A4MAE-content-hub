@@ -55,25 +55,25 @@ const Hero = () => {
             _groupHover={{ transform: "scale(1.1) rotate(-2deg)" }}
           />
           <Box
+            role="group"
             p={8}
             position="absolute"
-            bottom="0px"
+            top="0px"
             left="0px"
             width="100%"
+            height="100%"
             transition="all 0.4s ease-out"
             color="transparent"
             transform="translateY(100%)"
             opacity={0}
-            borderTop="1px solid rgba(56, 178, 172)"
-            overflow="hidden"
             _groupHover={{
-              backgroundImage: "linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 1))",
+              backgroundImage: "linear-gradient(rgba(0, 0, 0, 75%), rgba(56, 178, 172, 0.4))",
               color: "gray.200",
               transform: "translateY(0)",
               opacity: "1",
             }}
           >
-            <Text fontSize={["sm"]} fontWeight="bold" letterSpacing="0.15em" lineHeight={"2"} noOfLines={3} _groupHover={{ color: "gray.300" }}>
+            <Text fontSize={["sm"]} fontWeight="bold" letterSpacing="0.15em" lineHeight={"2"} noOfLines={2} _groupHover={{ color: "gray.300" }}>
               Description of asset goes here. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
               dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
               sanctus et Lorem ipsum dolor sit amet. Lrem ipsum dolor sit amet sed diam nonumy.
@@ -129,26 +129,25 @@ const Hero = () => {
             _groupHover={{ transform: "scale(1.1) rotate(-2deg)" }}
           />
           <Box
+            role="group"
             p={8}
-            py={2}
             position="absolute"
             top="0px"
             left="0px"
             width="100%"
+            height="100%"
             transition="all 0.4s ease-out"
             color="transparent"
-            transform="translateY(-100%)"
+            transform="translateY(100%)"
             opacity={0}
-            borderBottom="1px solid rgba(56, 178, 172)"
-            overflow="hidden"
             _groupHover={{
-              backgroundImage: "linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 1))",
+              backgroundImage: "linear-gradient(rgba(0, 0, 0, 75%), rgba(56, 178, 172, 0.4))",
               color: "gray.200",
               transform: "translateY(0)",
               opacity: "1",
             }}
           >
-            <Text fontSize={["xs"]} fontWeight="bold" letterSpacing="0.15em" lineHeight={"1.8"} noOfLines={2} _groupHover={{ color: "gray.300" }}>
+            <Text fontSize={["sm"]} fontWeight="bold" letterSpacing="0.15em" lineHeight={"1.8"} noOfLines={2} _groupHover={{ color: "gray.300" }}>
               Description of asset goes here. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
               dolore magna aliquyam erat, sed diam voluptua.
             </Text>
@@ -203,26 +202,25 @@ const Hero = () => {
             _groupHover={{ transform: "scale(1.1) rotate(-2deg)" }}
           />
           <Box
+            role="group"
             p={8}
-            py={2}
             position="absolute"
             top="0px"
             left="0px"
             width="100%"
+            height="100%"
             transition="all 0.4s ease-out"
             color="transparent"
-            transform="translateY(-100%)"
+            transform="translateY(100%)"
             opacity={0}
-            borderBottom="1px solid rgba(56, 178, 172)"
-            overflow="hidden"
             _groupHover={{
-              backgroundImage: "linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 1))",
+              backgroundImage: "linear-gradient(rgba(0, 0, 0, 75%), rgba(56, 178, 172, 0.4))",
               color: "gray.200",
               transform: "translateY(0)",
               opacity: "1",
             }}
           >
-            <Text fontSize={["xs"]} fontWeight="bold" letterSpacing="0.15em" lineHeight={"1.8"} noOfLines={2} _groupHover={{ color: "gray.300" }}>
+            <Text fontSize={["sm"]} fontWeight="bold" letterSpacing="0.15em" lineHeight={"1.8"} noOfLines={2} _groupHover={{ color: "gray.300" }}>
               Description of asset goes here. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut.
             </Text>
           </Box>
