@@ -2,11 +2,12 @@ import { useState, useEffect } from "react";
 import Layout from "./components/Layout";
 import Hero from "./components/Hero";
 import Grid from "./components/Grid";
-import { Box, Button, Circle, Center, Container, Heading, Tabs, TabList, TabPanels, Tab, TabPanel, Text } from "@chakra-ui/react";
+import { Box, Button, Circle, Center, Container, Heading, Spinner, Tabs, TabList, TabPanels, Tab, TabPanel, Text } from "@chakra-ui/react";
 
 // Adobe XD: https://xd.adobe.com/view/20ffd87b-1008-4d82-bc49-2e39c3cb2b1d-75ac/
 
 function App() {
+  const [isLoading, setIsLoading] = useState(false);
   const [all, setAll] = useState([]);
   const [ebooks, setEbooks] = useState([]);
   const [whitepapers, setWhitepapers] = useState([]);
@@ -33,6 +34,8 @@ function App() {
 
     const fetchData = async () => {
       try {
+        setIsLoading(true);
+
         const response = await fetch(proxyURL + apiURL);
         const json = await response.json();
         setAll(json.items);
@@ -42,6 +45,7 @@ function App() {
           json.items.filter((x: any) => x.item.additionalFields.contentCategory === "Webcast" || x.item.additionalFields.contentCategory === "WEBCAST")
         );
         setOnlineConferences(json.items.filter((x: any) => x.item.additionalFields.contentCategory === "Online Conference"));
+        setIsLoading(false);
       } catch (error) {
         console.log("error", error);
       }
@@ -178,7 +182,13 @@ function App() {
                 <TabPanels>
                   {/* content production all content */}
                   <TabPanel py={0}>
-                    <Grid collection={all} image="all" />
+                    {isLoading ? (
+                      <Center minHeight={"400px"}>
+                        <Spinner thickness="4px" speed="0.65s" emptyColor="gray.200" color="teal.500" size="xl" />
+                      </Center>
+                    ) : (
+                      <Grid collection={all} image="all" />
+                    )}
                   </TabPanel>
 
                   {/* content production ebooks content */}
