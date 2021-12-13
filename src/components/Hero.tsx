@@ -27,7 +27,7 @@ const Hero = () => {
             </Text>
 
             <Box mt={3}>
-              <Link href="#" isExternal transition="all 2s ease" _hover={{ textUnderline: "none" }}>
+              <Link href="#" isExternal _hover={{ textUnderline: "none" }}>
                 <Text
                   as="span"
                   fontSize={["md", "lg"]}
@@ -51,7 +51,7 @@ const Hero = () => {
             backgroundImage="linear-gradient(rgba(0,0,0, 0.4),rgba(0,0,0, 0.7)),url(https://images.unsplash.com/photo-1507874457470-272b3c8d8ee2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80)"
             backgroundPosition="center"
             backgroundSize="cover"
-            transition="all 1.4s ease-out"
+            transition="all 0.4s ease-out"
             _groupHover={{ transform: "scale(1.1) rotate(-2deg)" }}
           />
           <Box
@@ -101,7 +101,7 @@ const Hero = () => {
               E-Book
             </Text>
             <Box mt={3}>
-              <Link href="#" isExternal transition="all 2s ease" _hover={{ textUnderline: "none" }}>
+              <Link href="#" isExternal _hover={{ textUnderline: "none" }}>
                 <Text
                   as="span"
                   fontSize="md"
@@ -125,7 +125,7 @@ const Hero = () => {
             backgroundImage="linear-gradient(rgba(0,0,0, 0.4),rgba(0,0,0, 0.7)),url(https://images.unsplash.com/photo-1587893904933-5b23fefaea6d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80)"
             backgroundPosition="center"
             backgroundSize="cover"
-            transition="all 1.4s ease-out"
+            transition="all 0.4s ease-out"
             _groupHover={{ transform: "scale(1.1) rotate(-2deg)" }}
           />
           <Box
@@ -198,7 +198,7 @@ const Hero = () => {
             backgroundImage="linear-gradient(rgba(0,0,0, 0.4),rgba(0,0,0, 0.7)),url(https://images.unsplash.com/photo-1598387992619-f86d5293bace?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1752&q=80)"
             backgroundPosition="center"
             backgroundSize="cover"
-            transition="all 1.4s ease-out"
+            transition="all 0.4s ease-out"
             _groupHover={{ transform: "scale(1.1) rotate(-2deg)" }}
           />
           <Box
