@@ -57,7 +57,7 @@ function App() {
   return (
     <Layout>
       <Hero />
-      <Container maxWidth="1200px" background="#232f3e">
+      <Container maxWidth="1200px">
         <Box textAlign="center" color="white" py={14}>
           <Heading fontSize={["2xl", "3xl"]} fontWeight="bold">
             Lorem ipsum dolor sit amet
@@ -70,7 +70,7 @@ function App() {
         </Box>
       </Container>
 
-      <Container maxWidth="1200px" background="#232f3e" p={0}>
+      <Container maxWidth="1200px" p={0}>
         <Tabs variant="enclosed">
           <TabList color="white" justifyContent="space-around" px={3}>
             {/* Content Production Tab */}

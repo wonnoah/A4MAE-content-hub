@@ -7,7 +7,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   const [count, setCount] = useState(0);
 
   return (
-    <Box background="#232f3e" minHeight="100vh">
+    <Box background="radial-gradient(circle, rgba(35,47,62,1) 59%, rgba(61,73,88,1) 100%)" minHeight="100vh">
       <Header />
       {children}
       <Footer />
