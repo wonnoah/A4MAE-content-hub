@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import Layout from "./components/Layout";
 import Hero from "./components/Hero";
 import Grid from "./components/Grid";
-import { Box, Button, Circle, Center, Container, Heading, Spinner, Tabs, TabList, TabPanels, Tab, TabPanel, Text } from "@chakra-ui/react";
+import { Box, Button, Circle, Center, Container, Heading, Spinner, Tabs, TabList, TabPanels, Tab, TabPanel, Text, Tag } from "@chakra-ui/react";
+import { isZero } from "framer-motion/types/animation/utils/transitions";
 
 // Adobe XD: https://xd.adobe.com/view/20ffd87b-1008-4d82-bc49-2e39c3cb2b1d-75ac/
 
@@ -13,6 +14,11 @@ function App() {
   const [whitepapers, setWhitepapers] = useState([]);
   const [webcasts, setWebcasts] = useState([]);
   const [onlineConferences, setOnlineConferences] = useState([]);
+  const [contentProduction, setContentProduction] = useState([]);
+  console.log("🚀 ~ file: App.tsx ~ line 17 ~ App ~ contentProduction", contentProduction);
+
+  // filter for asset type
+  const filteredEbooks = (x: any) => x.item.additionalFields.contentCategory === "e-book" || x.item.additionalFields.contentCategory === "E-Book";
 
   const all10Limit = ebooks.slice(0, 10);
   const ebooks10Limit = ebooks.slice(0, 10);
@@ -32,6 +38,10 @@ function App() {
     const apiURL = all;
     const proxyURL = "https://powerful-bastion-47434.herokuapp.com/";
 
+    function checkIsContentProduction(x: any) {
+      return x.name == "Content Distribution";
+    }
+
     const fetchData = async () => {
       try {
         setIsLoading(true);
@@ -40,6 +50,8 @@ function App() {
         const json = await response.json();
         setAll(json.items);
         setEbooks(json.items.filter((x: any) => x.item.additionalFields.contentCategory === "e-book" || x.item.additionalFields.contentCategory === "E-Book"));
+        setContentProduction(json.items.filter((x: any) => x.tags.find((x: any) => x.name == "Content Distribution")));
+        // setContentProduction(json.items.filter((x: any) => x.tags.filter((y: any) => y.name === "Webinar")));
         setWhitepapers(json.items.filter((x: any) => x.item.additionalFields.contentCategory === "White Paper"));
         setWebcasts(
           json.items.filter((x: any) => x.item.additionalFields.contentCategory === "Webcast" || x.item.additionalFields.contentCategory === "WEBCAST")
