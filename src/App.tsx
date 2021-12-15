@@ -17,15 +17,24 @@ function App() {
 
   const [contentProduction, setContentProduction] = useState([]);
   const [mediaSupplyChain, setMediaSupplyChain] = useState([]);
+  console.log("🚀 ~ file: App.tsx ~ line 20 ~ App ~ mediaSupplyChain", mediaSupplyChain);
   const [broadcast, setBroadcast] = useState([]);
   const [dataScienceAnalytics, setDataScienceAnalytics] = useState([]);
   const [d2cStreaming, setD2cStreaming] = useState([]);
 
-  // filter for asset type
+  // filter collection for asset type
   const filteredEbooks = (x: any[]) => {
     return x.filter((x: any) => x.item.additionalFields.contentCategory === "e-book" || x.item.additionalFields.contentCategory === "E-Book");
   };
-  console.log("🚀 ~ file: App.tsx ~ line 31 ~ App ~ filteredEbooks", filteredEbooks(contentProduction));
+  const filteredWhitepapers = (x: any[]) => {
+    return x.filter((x: any) => x.item.additionalFields.contentCategory === "White Paper");
+  };
+  const filteredWebcasts = (x: any[]) => {
+    return x.filter((x: any) => x.item.additionalFields.contentCategory === "Webcast" || x.item.additionalFields.contentCategory === "WEBCAST");
+  };
+  const filteredOnlineConferences = (x: any[]) => {
+    return x.filter((x: any) => x.item.additionalFields.contentCategory === "Online Conference");
+  };
 
   const all10Limit = ebooks.slice(0, 10);
   const ebooks10Limit = ebooks.slice(0, 10);
@@ -156,7 +165,7 @@ function App() {
                   {/* all tag */}
                   <Tab textTransform="uppercase" fontSize="xs" px={2} m={1} borderRadius="lg" color="gray.200" _selected={{ background: "teal.600" }}>
                     <Circle size="25px" color="gray.300" bg="teal.700" mr="2">
-                      <Text fontSize="xs"> {all.length}</Text>
+                      <Text fontSize="xs"> {contentProduction.length}</Text>
                     </Circle>
                     all
                   </Tab>
@@ -164,7 +173,7 @@ function App() {
                   {/* ebooks tag */}
                   <Tab textTransform="uppercase" fontSize="xs" px={2} m={1} borderRadius="lg" color="gray.200" _selected={{ background: "teal.600" }}>
                     <Circle size="25px" color="gray.300" bg="teal.700" mr="2">
-                      <Text fontSize="xs"> {ebooks.length}</Text>
+                      <Text fontSize="xs"> {filteredEbooks(contentProduction).length}</Text>
                     </Circle>
                     ebooks
                   </Tab>
@@ -172,7 +181,7 @@ function App() {
                   {/* webcasts tag */}
                   <Tab textTransform="uppercase" fontSize="xs" px={2} m={1} borderRadius="lg" color="gray.200" _selected={{ background: "teal.600" }}>
                     <Circle size="25px" color="gray.300" bg="teal.700" mr="2">
-                      <Text fontSize="xs"> {webcasts.length}</Text>
+                      <Text fontSize="xs"> {filteredWebcasts(contentProduction).length}</Text>
                     </Circle>
                     webcasts
                   </Tab>
@@ -180,7 +189,7 @@ function App() {
                   {/* whitepapers tag */}
                   <Tab textTransform="uppercase" fontSize="xs" px={2} m={1} borderRadius="lg" color="gray.200" _selected={{ background: "teal.600" }}>
                     <Circle size="25px" color="gray.300" bg="teal.700" mr="2">
-                      <Text fontSize="xs"> {whitepapers.length}</Text>
+                      <Text fontSize="xs"> {filteredWhitepapers(contentProduction).length}</Text>
                     </Circle>
                     whitepapers
                   </Tab>
@@ -188,7 +197,7 @@ function App() {
                   {/* conferences tag */}
                   <Tab textTransform="uppercase" fontSize="xs" px={2} m={1} borderRadius="lg" color="gray.200" _selected={{ background: "teal.600" }}>
                     <Circle size="25px" color="gray.300" bg="teal.700" mr="2">
-                      <Text fontSize="xs"> {onlineConferences.length}</Text>
+                      <Text fontSize="xs"> {filteredOnlineConferences(contentProduction).length}</Text>
                     </Circle>
                     conferences
                   </Tab>
@@ -202,58 +211,351 @@ function App() {
                         <Spinner thickness="4px" speed="0.65s" emptyColor="gray.200" color="teal.500" size="xl" />
                       </Center>
                     ) : (
-                      <Grid collection={all} image="all" />
+                      <Grid collection={contentProduction} image="all" />
                     )}
                   </TabPanel>
 
                   {/* content production ebooks content */}
                   <TabPanel py={0}>
-                    <Grid collection={ebooks} image="ebooks" />
+                    <Grid collection={filteredEbooks(contentProduction)} image="ebooks" />
                   </TabPanel>
 
                   {/* content production webcasts content */}
                   <TabPanel py={0}>
-                    <Grid collection={webcasts} image="webcasts" />
+                    <Grid collection={filteredWebcasts(contentProduction)} image="webcasts" />
                   </TabPanel>
 
                   {/* content production whitepapers content */}
                   <TabPanel py={0}>
-                    <Grid collection={whitepapers} image="whitepapers" />
+                    <Grid collection={filteredWhitepapers(contentProduction)} image="whitepapers" />
                   </TabPanel>
 
                   {/* content production conferences content */}
                   <TabPanel py={0}>
-                    <Grid collection={onlineConferences} image="onlineConferences" />
+                    <Grid collection={filteredOnlineConferences(contentProduction)} image="onlineConferences" />
                   </TabPanel>
                 </TabPanels>
               </Tabs>
             </TabPanel>
 
             {/* Media Supply Chain Content */}
-            <TabPanel>
-              <Center minHeight="400px">
-                <Text fontSize="3xl" color="white">
-                  Media Supply Chain Content Goes Here
-                </Text>
-              </Center>
+            <TabPanel px={0}>
+              <Tabs size="sm" variant="soft-rounded">
+                <TabList flexWrap="wrap" px={4}>
+                  {/* all tag */}
+                  <Tab textTransform="uppercase" fontSize="xs" px={2} m={1} borderRadius="lg" color="gray.200" _selected={{ background: "teal.600" }}>
+                    <Circle size="25px" color="gray.300" bg="teal.700" mr="2">
+                      <Text fontSize="xs"> {mediaSupplyChain.length}</Text>
+                    </Circle>
+                    all
+                  </Tab>
+
+                  {/* ebooks tag */}
+                  <Tab textTransform="uppercase" fontSize="xs" px={2} m={1} borderRadius="lg" color="gray.200" _selected={{ background: "teal.600" }}>
+                    <Circle size="25px" color="gray.300" bg="teal.700" mr="2">
+                      <Text fontSize="xs"> {filteredEbooks(mediaSupplyChain).length}</Text>
+                    </Circle>
+                    ebooks
+                  </Tab>
+
+                  {/* webcasts tag */}
+                  <Tab textTransform="uppercase" fontSize="xs" px={2} m={1} borderRadius="lg" color="gray.200" _selected={{ background: "teal.600" }}>
+                    <Circle size="25px" color="gray.300" bg="teal.700" mr="2">
+                      <Text fontSize="xs"> {filteredWebcasts(mediaSupplyChain).length}</Text>
+                    </Circle>
+                    webcasts
+                  </Tab>
+
+                  {/* whitepapers tag */}
+                  <Tab textTransform="uppercase" fontSize="xs" px={2} m={1} borderRadius="lg" color="gray.200" _selected={{ background: "teal.600" }}>
+                    <Circle size="25px" color="gray.300" bg="teal.700" mr="2">
+                      <Text fontSize="xs"> {filteredWhitepapers(mediaSupplyChain).length}</Text>
+                    </Circle>
+                    whitepapers
+                  </Tab>
+
+                  {/* conferences tag */}
+                  <Tab textTransform="uppercase" fontSize="xs" px={2} m={1} borderRadius="lg" color="gray.200" _selected={{ background: "teal.600" }}>
+                    <Circle size="25px" color="gray.300" bg="teal.700" mr="2">
+                      <Text fontSize="xs"> {filteredOnlineConferences(mediaSupplyChain).length}</Text>
+                    </Circle>
+                    conferences
+                  </Tab>
+                </TabList>
+
+                <TabPanels>
+                  {/* media supply chain all content */}
+                  <TabPanel py={0}>
+                    {isLoading ? (
+                      <Center minHeight={"400px"}>
+                        <Spinner thickness="4px" speed="0.65s" emptyColor="gray.200" color="teal.500" size="xl" />
+                      </Center>
+                    ) : (
+                      <Grid collection={mediaSupplyChain} image="all" />
+                    )}
+                  </TabPanel>
+
+                  {/* media supply chain ebooks content */}
+                  <TabPanel py={0}>
+                    <Grid collection={filteredEbooks(mediaSupplyChain)} image="ebooks" />
+                  </TabPanel>
+
+                  {/* media supply chain webcasts content */}
+                  <TabPanel py={0}>
+                    <Grid collection={filteredWebcasts(mediaSupplyChain)} image="webcasts" />
+                  </TabPanel>
+
+                  {/* media supply chain whitepapers content */}
+                  <TabPanel py={0}>
+                    <Grid collection={filteredWhitepapers(mediaSupplyChain)} image="whitepapers" />
+                  </TabPanel>
+
+                  {/* media supply chain conferences content */}
+                  <TabPanel py={0}>
+                    <Grid collection={filteredOnlineConferences(mediaSupplyChain)} image="onlineConferences" />
+                  </TabPanel>
+                </TabPanels>
+              </Tabs>
             </TabPanel>
 
             {/* Broadcast Content */}
-            <TabPanel>
-              <Center minHeight="400px">
-                <Text fontSize="3xl" color="white">
-                  Broadcast Content Goes Here
-                </Text>
-              </Center>
+            <TabPanel px={0}>
+              <Tabs size="sm" variant="soft-rounded">
+                <TabList flexWrap="wrap" px={4}>
+                  {/* all tag */}
+                  <Tab textTransform="uppercase" fontSize="xs" px={2} m={1} borderRadius="lg" color="gray.200" _selected={{ background: "teal.600" }}>
+                    <Circle size="25px" color="gray.300" bg="teal.700" mr="2">
+                      <Text fontSize="xs"> {broadcast.length}</Text>
+                    </Circle>
+                    all
+                  </Tab>
+
+                  {/* ebooks tag */}
+                  <Tab textTransform="uppercase" fontSize="xs" px={2} m={1} borderRadius="lg" color="gray.200" _selected={{ background: "teal.600" }}>
+                    <Circle size="25px" color="gray.300" bg="teal.700" mr="2">
+                      <Text fontSize="xs"> {filteredEbooks(broadcast).length}</Text>
+                    </Circle>
+                    ebooks
+                  </Tab>
+
+                  {/* webcasts tag */}
+                  <Tab textTransform="uppercase" fontSize="xs" px={2} m={1} borderRadius="lg" color="gray.200" _selected={{ background: "teal.600" }}>
+                    <Circle size="25px" color="gray.300" bg="teal.700" mr="2">
+                      <Text fontSize="xs"> {filteredWebcasts(broadcast).length}</Text>
+                    </Circle>
+                    webcasts
+                  </Tab>
+
+                  {/* whitepapers tag */}
+                  <Tab textTransform="uppercase" fontSize="xs" px={2} m={1} borderRadius="lg" color="gray.200" _selected={{ background: "teal.600" }}>
+                    <Circle size="25px" color="gray.300" bg="teal.700" mr="2">
+                      <Text fontSize="xs"> {filteredWhitepapers(broadcast).length}</Text>
+                    </Circle>
+                    whitepapers
+                  </Tab>
+
+                  {/* conferences tag */}
+                  <Tab textTransform="uppercase" fontSize="xs" px={2} m={1} borderRadius="lg" color="gray.200" _selected={{ background: "teal.600" }}>
+                    <Circle size="25px" color="gray.300" bg="teal.700" mr="2">
+                      <Text fontSize="xs"> {filteredOnlineConferences(broadcast).length}</Text>
+                    </Circle>
+                    conferences
+                  </Tab>
+                </TabList>
+
+                <TabPanels>
+                  {/* broadcast all  */}
+                  <TabPanel py={0}>
+                    {isLoading ? (
+                      <Center minHeight={"400px"}>
+                        <Spinner thickness="4px" speed="0.65s" emptyColor="gray.200" color="teal.500" size="xl" />
+                      </Center>
+                    ) : (
+                      <Grid collection={broadcast} image="all" />
+                    )}
+                  </TabPanel>
+
+                  {/* broadcast ebooks */}
+                  <TabPanel py={0}>
+                    <Grid collection={filteredEbooks(broadcast)} image="ebooks" />
+                  </TabPanel>
+
+                  {/* broadcast webcasts */}
+                  <TabPanel py={0}>
+                    <Grid collection={filteredWebcasts(broadcast)} image="webcasts" />
+                  </TabPanel>
+
+                  {/* broadcast whitepapers */}
+                  <TabPanel py={0}>
+                    <Grid collection={filteredWhitepapers(broadcast)} image="whitepapers" />
+                  </TabPanel>
+
+                  {/* broadcast conferences */}
+                  <TabPanel py={0}>
+                    <Grid collection={filteredOnlineConferences(broadcast)} image="onlineConferences" />
+                  </TabPanel>
+                </TabPanels>
+              </Tabs>
             </TabPanel>
 
             {/* D2C & Streaming Content */}
-            <TabPanel>
-              <Center minHeight="400px">
-                <Text fontSize="3xl" color="white">
-                  D2C & Streaming Content Goes Here
-                </Text>
-              </Center>
+            <TabPanel px={0}>
+              <Tabs size="sm" variant="soft-rounded">
+                <TabList flexWrap="wrap" px={4}>
+                  {/* all tag */}
+                  <Tab textTransform="uppercase" fontSize="xs" px={2} m={1} borderRadius="lg" color="gray.200" _selected={{ background: "teal.600" }}>
+                    <Circle size="25px" color="gray.300" bg="teal.700" mr="2">
+                      <Text fontSize="xs"> {d2cStreaming.length}</Text>
+                    </Circle>
+                    all
+                  </Tab>
+
+                  {/* ebooks tag */}
+                  <Tab textTransform="uppercase" fontSize="xs" px={2} m={1} borderRadius="lg" color="gray.200" _selected={{ background: "teal.600" }}>
+                    <Circle size="25px" color="gray.300" bg="teal.700" mr="2">
+                      <Text fontSize="xs"> {filteredEbooks(d2cStreaming).length}</Text>
+                    </Circle>
+                    ebooks
+                  </Tab>
+
+                  {/* webcasts tag */}
+                  <Tab textTransform="uppercase" fontSize="xs" px={2} m={1} borderRadius="lg" color="gray.200" _selected={{ background: "teal.600" }}>
+                    <Circle size="25px" color="gray.300" bg="teal.700" mr="2">
+                      <Text fontSize="xs"> {filteredWebcasts(d2cStreaming).length}</Text>
+                    </Circle>
+                    webcasts
+                  </Tab>
+
+                  {/* whitepapers tag */}
+                  <Tab textTransform="uppercase" fontSize="xs" px={2} m={1} borderRadius="lg" color="gray.200" _selected={{ background: "teal.600" }}>
+                    <Circle size="25px" color="gray.300" bg="teal.700" mr="2">
+                      <Text fontSize="xs"> {filteredWhitepapers(d2cStreaming).length}</Text>
+                    </Circle>
+                    whitepapers
+                  </Tab>
+
+                  {/* conferences tag */}
+                  <Tab textTransform="uppercase" fontSize="xs" px={2} m={1} borderRadius="lg" color="gray.200" _selected={{ background: "teal.600" }}>
+                    <Circle size="25px" color="gray.300" bg="teal.700" mr="2">
+                      <Text fontSize="xs"> {filteredOnlineConferences(d2cStreaming).length}</Text>
+                    </Circle>
+                    conferences
+                  </Tab>
+                </TabList>
+
+                <TabPanels>
+                  {/* D2C & Streaming all  */}
+                  <TabPanel py={0}>
+                    {isLoading ? (
+                      <Center minHeight={"400px"}>
+                        <Spinner thickness="4px" speed="0.65s" emptyColor="gray.200" color="teal.500" size="xl" />
+                      </Center>
+                    ) : (
+                      <Grid collection={d2cStreaming} image="all" />
+                    )}
+                  </TabPanel>
+
+                  {/* D2C & Streaming ebooks */}
+                  <TabPanel py={0}>
+                    <Grid collection={filteredEbooks(d2cStreaming)} image="ebooks" />
+                  </TabPanel>
+
+                  {/* D2C & Streaming webcasts */}
+                  <TabPanel py={0}>
+                    <Grid collection={filteredWebcasts(d2cStreaming)} image="webcasts" />
+                  </TabPanel>
+
+                  {/* D2C & Streaming whitepapers */}
+                  <TabPanel py={0}>
+                    <Grid collection={filteredWhitepapers(d2cStreaming)} image="whitepapers" />
+                  </TabPanel>
+
+                  {/* D2C & Streaming conferences */}
+                  <TabPanel py={0}>
+                    <Grid collection={filteredOnlineConferences(d2cStreaming)} image="onlineConferences" />
+                  </TabPanel>
+                </TabPanels>
+              </Tabs>
+            </TabPanel>
+
+            {/* Data Science & Analytics Content */}
+            <TabPanel px={0}>
+              <Tabs size="sm" variant="soft-rounded">
+                <TabList flexWrap="wrap" px={4}>
+                  {/* all tag */}
+                  <Tab textTransform="uppercase" fontSize="xs" px={2} m={1} borderRadius="lg" color="gray.200" _selected={{ background: "teal.600" }}>
+                    <Circle size="25px" color="gray.300" bg="teal.700" mr="2">
+                      <Text fontSize="xs"> {dataScienceAnalytics.length}</Text>
+                    </Circle>
+                    all
+                  </Tab>
+
+                  {/* ebooks tag */}
+                  <Tab textTransform="uppercase" fontSize="xs" px={2} m={1} borderRadius="lg" color="gray.200" _selected={{ background: "teal.600" }}>
+                    <Circle size="25px" color="gray.300" bg="teal.700" mr="2">
+                      <Text fontSize="xs"> {filteredEbooks(dataScienceAnalytics).length}</Text>
+                    </Circle>
+                    ebooks
+                  </Tab>
+
+                  {/* webcasts tag */}
+                  <Tab textTransform="uppercase" fontSize="xs" px={2} m={1} borderRadius="lg" color="gray.200" _selected={{ background: "teal.600" }}>
+                    <Circle size="25px" color="gray.300" bg="teal.700" mr="2">
+                      <Text fontSize="xs"> {filteredWebcasts(dataScienceAnalytics).length}</Text>
+                    </Circle>
+                    webcasts
+                  </Tab>
+
+                  {/* whitepapers tag */}
+                  <Tab textTransform="uppercase" fontSize="xs" px={2} m={1} borderRadius="lg" color="gray.200" _selected={{ background: "teal.600" }}>
+                    <Circle size="25px" color="gray.300" bg="teal.700" mr="2">
+                      <Text fontSize="xs"> {filteredWhitepapers(dataScienceAnalytics).length}</Text>
+                    </Circle>
+                    whitepapers
+                  </Tab>
+
+                  {/* conferences tag */}
+                  <Tab textTransform="uppercase" fontSize="xs" px={2} m={1} borderRadius="lg" color="gray.200" _selected={{ background: "teal.600" }}>
+                    <Circle size="25px" color="gray.300" bg="teal.700" mr="2">
+                      <Text fontSize="xs"> {filteredOnlineConferences(dataScienceAnalytics).length}</Text>
+                    </Circle>
+                    conferences
+                  </Tab>
+                </TabList>
+
+                <TabPanels>
+                  {/* Data Science & Analytics all  */}
+                  <TabPanel py={0}>
+                    {isLoading ? (
+                      <Center minHeight={"400px"}>
+                        <Spinner thickness="4px" speed="0.65s" emptyColor="gray.200" color="teal.500" size="xl" />
+                      </Center>
+                    ) : (
+                      <Grid collection={dataScienceAnalytics} image="all" />
+                    )}
+                  </TabPanel>
+
+                  {/* Data Science & Analytics ebooks */}
+                  <TabPanel py={0}>
+                    <Grid collection={filteredEbooks(dataScienceAnalytics)} image="ebooks" />
+                  </TabPanel>
+
+                  {/* Data Science & Analytics webcasts */}
+                  <TabPanel py={0}>
+                    <Grid collection={filteredWebcasts(dataScienceAnalytics)} image="webcasts" />
+                  </TabPanel>
+
+                  {/* Data Science & Analytics whitepapers */}
+                  <TabPanel py={0}>
+                    <Grid collection={filteredWhitepapers(dataScienceAnalytics)} image="whitepapers" />
+                  </TabPanel>
+
+                  {/* Data Science & Analytics conferences */}
+                  <TabPanel py={0}>
+                    <Grid collection={filteredOnlineConferences(dataScienceAnalytics)} image="onlineConferences" />
+                  </TabPanel>
+                </TabPanels>
+              </Tabs>
             </TabPanel>
 
             {/* Data Science & Analytics Content */}
