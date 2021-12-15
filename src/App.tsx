@@ -14,11 +14,18 @@ function App() {
   const [whitepapers, setWhitepapers] = useState([]);
   const [webcasts, setWebcasts] = useState([]);
   const [onlineConferences, setOnlineConferences] = useState([]);
+
   const [contentProduction, setContentProduction] = useState([]);
-  console.log("🚀 ~ file: App.tsx ~ line 17 ~ App ~ contentProduction", contentProduction);
+  const [mediaSupplyChain, setMediaSupplyChain] = useState([]);
+  const [broadcast, setBroadcast] = useState([]);
+  const [dataScienceAnalytics, setDataScienceAnalytics] = useState([]);
+  const [d2cStreaming, setD2cStreaming] = useState([]);
 
   // filter for asset type
-  const filteredEbooks = (x: any) => x.item.additionalFields.contentCategory === "e-book" || x.item.additionalFields.contentCategory === "E-Book";
+  const filteredEbooks = (x: any[]) => {
+    return x.filter((x: any) => x.item.additionalFields.contentCategory === "e-book" || x.item.additionalFields.contentCategory === "E-Book");
+  };
+  console.log("🚀 ~ file: App.tsx ~ line 31 ~ App ~ filteredEbooks", filteredEbooks(contentProduction));
 
   const all10Limit = ebooks.slice(0, 10);
   const ebooks10Limit = ebooks.slice(0, 10);
@@ -26,21 +33,12 @@ function App() {
   const webcasts10Limit = webcasts.slice(0, 10);
 
   useEffect(() => {
-    const all =
+    // directory API
+    const apiURL =
       "https://aws.amazon.com/api/dirs/items/search?item.directoryId=media-resources&sort_by=item.dateCreated&sort_order=desc&size=50&item.locale=en_US";
-    const ebooks =
-      "https://aws.amazon.com/api/dirs/items/search?item.directoryId=media-resources&sort_by=item.dateCreated&sort_order=desc&size=12&item.locale=en_US&tags.id=media-resources%23contentcategory%23e-books";
-    const webcasts =
-      "https://aws.amazon.com/api/dirs/items/search?item.directoryId=media-resources&sort_by=item.dateCreated&sort_order=desc&size=12&item.locale=en_US&tags.id=media-resources%23contentcategory%23webcast";
-    const whitepapers =
-      "https://aws.amazon.com/api/dirs/items/search?item.directoryId=media-resources&sort_by=item.dateCreated&sort_order=desc&size=12&item.locale=en_US&tags.id=media-resources%23contentcategory%23white-paper";
 
-    const apiURL = all;
+    // cors proxy URL
     const proxyURL = "https://powerful-bastion-47434.herokuapp.com/";
-
-    function checkIsContentProduction(x: any) {
-      return x.name == "Content Distribution";
-    }
 
     const fetchData = async () => {
       try {
@@ -48,10 +46,14 @@ function App() {
 
         const response = await fetch(proxyURL + apiURL);
         const json = await response.json();
+        setContentProduction(json.items.filter((x: any) => x.tags.find((x: any) => x.id == "media-resources#segment#content-distribution")));
+        setMediaSupplyChain(json.items.filter((x: any) => x.tags.find((x: any) => x.id == "media-resources#segment#media-supply-chain-archive")));
+        setBroadcast(json.items.filter((x: any) => x.tags.find((x: any) => x.id == "media-resources#segment#broadcast")));
+        setDataScienceAnalytics(json.items.filter((x: any) => x.tags.find((x: any) => x.id == "media-resources#segment#data-science-analytics")));
+        setD2cStreaming(json.items.filter((x: any) => x.tags.find((x: any) => x.id == "media-resources#segment#d2c-streaming")));
+
         setAll(json.items);
         setEbooks(json.items.filter((x: any) => x.item.additionalFields.contentCategory === "e-book" || x.item.additionalFields.contentCategory === "E-Book"));
-        setContentProduction(json.items.filter((x: any) => x.tags.find((x: any) => x.name == "Content Distribution")));
-        // setContentProduction(json.items.filter((x: any) => x.tags.filter((y: any) => y.name === "Webinar")));
         setWhitepapers(json.items.filter((x: any) => x.item.additionalFields.contentCategory === "White Paper"));
         setWebcasts(
           json.items.filter((x: any) => x.item.additionalFields.contentCategory === "Webcast" || x.item.additionalFields.contentCategory === "WEBCAST")
@@ -98,7 +100,6 @@ function App() {
             </Tab>
 
             {/* Media Supply Chain Tab */}
-
             <Tab
               px={[2, 4]}
               fontSize={["xs", "md"]}
@@ -121,6 +122,8 @@ function App() {
             >
               Broadcast
             </Tab>
+
+            {/* Direct-to-Consumer Tab */}
             <Tab
               px={[2, 4]}
               fontSize={["xs", "md"]}
