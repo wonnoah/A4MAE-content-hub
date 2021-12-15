@@ -36,7 +36,7 @@ const ContentGrid = ({ collection, image }: { collection: any[]; image: string }
     <>
       <Grid display={["block", "grid"]} templateColumns="repeat(4, 1fr)" gap={5} mt={4}>
         {showAssets.map((asset: any, i: any) => {
-          const { contentCategory, contentTitle, contentDescription, contentCtaURL } = asset.item.additionalFields;
+          const { contentCategory, contentTitle, contentDescription, contentCtaURL, Image } = asset.item.additionalFields;
           const { dateCreated, dateUpdated } = asset.item;
           return (
             <GridItem role="group" position="relative" key={i} color="white" mt={[4, 0]} boxShadow="lg" className="item" overflow="hidden">
@@ -48,7 +48,7 @@ const ContentGrid = ({ collection, image }: { collection: any[]; image: string }
                     left="0px"
                     width="100%"
                     height="100%"
-                    backgroundImage={`linear-gradient(rgba(0,0,0,0.25),rgba(0,0,0,0.75),rgba(0,0,0,1)),url("${collectionImage(image)}")`}
+                    backgroundImage={`linear-gradient(rgba(0,0,0,0.25),rgba(0,0,0,0.75),rgba(0,0,0,1)),url("${Image ? Image : collectionImage(image)}")`}
                     backgroundPosition="center"
                     backgroundSize="cover"
                     transition="all 0.4s ease-out"
