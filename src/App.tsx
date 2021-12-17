@@ -9,38 +9,32 @@ import { isZero } from "framer-motion/types/animation/utils/transitions";
 
 function App() {
   const [isLoading, setIsLoading] = useState(false);
-  const [all, setAll] = useState([]);
-  const [ebooks, setEbooks] = useState([]);
-  const [whitepapers, setWhitepapers] = useState([]);
-  const [webcasts, setWebcasts] = useState([]);
-  const [onlineConferences, setOnlineConferences] = useState([]);
-
   const [contentProduction, setContentProduction] = useState([]);
   const [mediaSupplyChain, setMediaSupplyChain] = useState([]);
-  console.log("🚀 ~ file: App.tsx ~ line 20 ~ App ~ mediaSupplyChain", mediaSupplyChain);
   const [broadcast, setBroadcast] = useState([]);
   const [dataScienceAnalytics, setDataScienceAnalytics] = useState([]);
   const [d2cStreaming, setD2cStreaming] = useState([]);
 
-  // filter collection for asset type
-  const filteredEbooks = (x: any[]) => {
-    return x.filter((x: any) => x.item.additionalFields.contentCategory === "e-book" || x.item.additionalFields.contentCategory === "E-Book");
-  };
-  const filteredWhitepapers = (x: any[]) => {
-    return x.filter((x: any) => x.item.additionalFields.contentCategory === "White Paper");
-  };
-  const filteredWebcasts = (x: any[]) => {
-    return x.filter((x: any) => x.item.additionalFields.contentCategory === "Webcast" || x.item.additionalFields.contentCategory === "WEBCAST");
-  };
-  const filteredOnlineConferences = (x: any[]) => {
-    return x.filter((x: any) => x.item.additionalFields.contentCategory === "Online Conference");
-  };
+  // filter collection for asset type and sort by FeatureOrder
+  const all = (x: any[]) => x.sort((a, b) => a.item.additionalFields.FeatureOrder - b.item.additionalFields.FeatureOrder);
+  const ebooks = (x: any[]) =>
+    x
+      .filter((x: any) => x.tags.find((x: any) => x.id == "media-resources#contentcategory#e-books"))
+      .sort((a, b) => a.item.additionalFields.FeatureOrder - b.item.additionalFields.FeatureOrder);
+  const filteredWhitepapers = (x: any[]) =>
+    x
+      .filter((x: any) => x.tags.find((x: any) => x.id == "media-resources#contentcategory#white-paper"))
+      .sort((a, b) => a.item.additionalFields.FeatureOrder - b.item.additionalFields.FeatureOrder);
+  const filteredWebcasts = (x: any[]) =>
+    x
+      .filter((x: any) => x.tags.find((x: any) => x.id == "media-resources#contentcategory#webcast"))
+      .sort((a, b) => a.item.additionalFields.FeatureOrder - b.item.additionalFields.FeatureOrder);
+  const filteredOnlineConferences = (x: any[]) =>
+    x
+      .filter((x: any) => x.tags.find((x: any) => x.id == "media-resources#contentcategory#online-conference"))
+      .sort((a, b) => a.item.additionalFields.FeatureOrder - b.item.additionalFields.FeatureOrder);
 
-  const all10Limit = ebooks.slice(0, 10);
-  const ebooks10Limit = ebooks.slice(0, 10);
-  const whitepapers10Limit = whitepapers.slice(0, 10);
-  const webcasts10Limit = webcasts.slice(0, 10);
-
+  // fetch data
   useEffect(() => {
     // directory API
     const apiURL =
@@ -52,22 +46,15 @@ function App() {
     const fetchData = async () => {
       try {
         setIsLoading(true);
-
         const response = await fetch(proxyURL + apiURL);
         const json = await response.json();
-        setContentProduction(json.items.filter((x: any) => x.tags.find((x: any) => x.id == "media-resources#segment#content-distribution")));
-        setMediaSupplyChain(json.items.filter((x: any) => x.tags.find((x: any) => x.id == "media-resources#segment#media-supply-chain-archive")));
-        setBroadcast(json.items.filter((x: any) => x.tags.find((x: any) => x.id == "media-resources#segment#broadcast")));
-        setDataScienceAnalytics(json.items.filter((x: any) => x.tags.find((x: any) => x.id == "media-resources#segment#data-science-analytics")));
-        setD2cStreaming(json.items.filter((x: any) => x.tags.find((x: any) => x.id == "media-resources#segment#d2c-streaming")));
-
-        setAll(json.items);
-        setEbooks(json.items.filter((x: any) => x.item.additionalFields.contentCategory === "e-book" || x.item.additionalFields.contentCategory === "E-Book"));
-        setWhitepapers(json.items.filter((x: any) => x.item.additionalFields.contentCategory === "White Paper"));
-        setWebcasts(
-          json.items.filter((x: any) => x.item.additionalFields.contentCategory === "Webcast" || x.item.additionalFields.contentCategory === "WEBCAST")
-        );
-        setOnlineConferences(json.items.filter((x: any) => x.item.additionalFields.contentCategory === "Online Conference"));
+        const featuredContent = json.items.filter((x: any) => x.item.additionalFields.FeatureOrder);
+        console.log("🚀 ~ file: App.tsx ~ line 54 ~ fetchData ~ featuredContent", featuredContent);
+        setContentProduction(featuredContent.filter((x: any) => x.tags.find((x: any) => x.id == "media-resources#segment#content-distribution")));
+        setMediaSupplyChain(featuredContent.filter((x: any) => x.tags.find((x: any) => x.id == "media-resources#segment#media-supply-chain-archive")));
+        setBroadcast(featuredContent.filter((x: any) => x.tags.find((x: any) => x.id == "media-resources#segment#broadcast")));
+        setDataScienceAnalytics(featuredContent.filter((x: any) => x.tags.find((x: any) => x.id == "media-resources#segment#data-science-analytics")));
+        setD2cStreaming(featuredContent.filter((x: any) => x.tags.find((x: any) => x.id == "media-resources#segment#d2c-streaming")));
         setIsLoading(false);
       } catch (error) {
         console.log("error", error);
@@ -88,7 +75,7 @@ function App() {
           <Text fontSize={["md", "lg"]} mt={4} lineHeight={2}>
             Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
             voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus et Lorem ipsum dolor sit amet.
-            Lrem ipsum dolor sit amet sed diam nonumy.
+            Lorem ipsum dolor sit amet sed diam nonumy.
           </Text>
         </Box>
       </Container>
@@ -173,7 +160,7 @@ function App() {
                   {/* ebooks tag */}
                   <Tab textTransform="uppercase" fontSize="xs" px={2} m={1} borderRadius="lg" color="gray.200" _selected={{ background: "teal.600" }}>
                     <Circle size="25px" color="gray.300" bg="teal.700" mr="2">
-                      <Text fontSize="xs"> {filteredEbooks(contentProduction).length}</Text>
+                      <Text fontSize="xs"> {ebooks(contentProduction).length}</Text>
                     </Circle>
                     ebooks
                   </Tab>
@@ -211,13 +198,13 @@ function App() {
                         <Spinner thickness="4px" speed="0.65s" emptyColor="gray.200" color="teal.500" size="xl" />
                       </Center>
                     ) : (
-                      <Grid collection={contentProduction} image="all" />
+                      <Grid collection={all(contentProduction)} image="all" />
                     )}
                   </TabPanel>
 
                   {/* content production ebooks content */}
                   <TabPanel py={0}>
-                    <Grid collection={filteredEbooks(contentProduction)} image="ebooks" />
+                    <Grid collection={ebooks(contentProduction)} image="ebooks" />
                   </TabPanel>
 
                   {/* content production webcasts content */}
@@ -253,7 +240,7 @@ function App() {
                   {/* ebooks tag */}
                   <Tab textTransform="uppercase" fontSize="xs" px={2} m={1} borderRadius="lg" color="gray.200" _selected={{ background: "teal.600" }}>
                     <Circle size="25px" color="gray.300" bg="teal.700" mr="2">
-                      <Text fontSize="xs"> {filteredEbooks(mediaSupplyChain).length}</Text>
+                      <Text fontSize="xs"> {ebooks(mediaSupplyChain).length}</Text>
                     </Circle>
                     ebooks
                   </Tab>
@@ -291,13 +278,13 @@ function App() {
                         <Spinner thickness="4px" speed="0.65s" emptyColor="gray.200" color="teal.500" size="xl" />
                       </Center>
                     ) : (
-                      <Grid collection={mediaSupplyChain} image="all" />
+                      <Grid collection={all(mediaSupplyChain)} image="all" />
                     )}
                   </TabPanel>
 
                   {/* media supply chain ebooks content */}
                   <TabPanel py={0}>
-                    <Grid collection={filteredEbooks(mediaSupplyChain)} image="ebooks" />
+                    <Grid collection={ebooks(mediaSupplyChain)} image="ebooks" />
                   </TabPanel>
 
                   {/* media supply chain webcasts content */}
@@ -333,7 +320,7 @@ function App() {
                   {/* ebooks tag */}
                   <Tab textTransform="uppercase" fontSize="xs" px={2} m={1} borderRadius="lg" color="gray.200" _selected={{ background: "teal.600" }}>
                     <Circle size="25px" color="gray.300" bg="teal.700" mr="2">
-                      <Text fontSize="xs"> {filteredEbooks(broadcast).length}</Text>
+                      <Text fontSize="xs"> {ebooks(broadcast).length}</Text>
                     </Circle>
                     ebooks
                   </Tab>
@@ -371,13 +358,13 @@ function App() {
                         <Spinner thickness="4px" speed="0.65s" emptyColor="gray.200" color="teal.500" size="xl" />
                       </Center>
                     ) : (
-                      <Grid collection={broadcast} image="all" />
+                      <Grid collection={all(broadcast)} image="all" />
                     )}
                   </TabPanel>
 
                   {/* broadcast ebooks */}
                   <TabPanel py={0}>
-                    <Grid collection={filteredEbooks(broadcast)} image="ebooks" />
+                    <Grid collection={ebooks(broadcast)} image="ebooks" />
                   </TabPanel>
 
                   {/* broadcast webcasts */}
@@ -413,7 +400,7 @@ function App() {
                   {/* ebooks tag */}
                   <Tab textTransform="uppercase" fontSize="xs" px={2} m={1} borderRadius="lg" color="gray.200" _selected={{ background: "teal.600" }}>
                     <Circle size="25px" color="gray.300" bg="teal.700" mr="2">
-                      <Text fontSize="xs"> {filteredEbooks(d2cStreaming).length}</Text>
+                      <Text fontSize="xs"> {ebooks(d2cStreaming).length}</Text>
                     </Circle>
                     ebooks
                   </Tab>
@@ -451,13 +438,13 @@ function App() {
                         <Spinner thickness="4px" speed="0.65s" emptyColor="gray.200" color="teal.500" size="xl" />
                       </Center>
                     ) : (
-                      <Grid collection={d2cStreaming} image="all" />
+                      <Grid collection={all(d2cStreaming)} image="all" />
                     )}
                   </TabPanel>
 
                   {/* D2C & Streaming ebooks */}
                   <TabPanel py={0}>
-                    <Grid collection={filteredEbooks(d2cStreaming)} image="ebooks" />
+                    <Grid collection={ebooks(d2cStreaming)} image="ebooks" />
                   </TabPanel>
 
                   {/* D2C & Streaming webcasts */}
@@ -493,7 +480,7 @@ function App() {
                   {/* ebooks tag */}
                   <Tab textTransform="uppercase" fontSize="xs" px={2} m={1} borderRadius="lg" color="gray.200" _selected={{ background: "teal.600" }}>
                     <Circle size="25px" color="gray.300" bg="teal.700" mr="2">
-                      <Text fontSize="xs"> {filteredEbooks(dataScienceAnalytics).length}</Text>
+                      <Text fontSize="xs"> {ebooks(dataScienceAnalytics).length}</Text>
                     </Circle>
                     ebooks
                   </Tab>
@@ -531,13 +518,13 @@ function App() {
                         <Spinner thickness="4px" speed="0.65s" emptyColor="gray.200" color="teal.500" size="xl" />
                       </Center>
                     ) : (
-                      <Grid collection={dataScienceAnalytics} image="all" />
+                      <Grid collection={all(dataScienceAnalytics)} image="all" />
                     )}
                   </TabPanel>
 
                   {/* Data Science & Analytics ebooks */}
                   <TabPanel py={0}>
-                    <Grid collection={filteredEbooks(dataScienceAnalytics)} image="ebooks" />
+                    <Grid collection={ebooks(dataScienceAnalytics)} image="ebooks" />
                   </TabPanel>
 
                   {/* Data Science & Analytics webcasts */}
@@ -556,15 +543,6 @@ function App() {
                   </TabPanel>
                 </TabPanels>
               </Tabs>
-            </TabPanel>
-
-            {/* Data Science & Analytics Content */}
-            <TabPanel>
-              <Center minHeight="400px">
-                <Text fontSize="3xl" color="white">
-                  Data Science & Analytics for Media Content Goes Here
-                </Text>
-              </Center>
             </TabPanel>
           </TabPanels>
         </Tabs>
