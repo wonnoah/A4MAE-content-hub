@@ -38,6 +38,7 @@ function Header() {
             </Flex>
           </GridItem>
         </Grid>
+
         <Flex display={["none", "none", "flex"]} gridGap={5} justifyContent="start" alignItems="center" p={2} pl={4} pt={0} pb={3}>
           <Text color="white" whiteSpace="nowrap">
             Products

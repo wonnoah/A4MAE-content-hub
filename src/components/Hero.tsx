@@ -21,11 +21,9 @@ const Hero = () => {
             <Heading fontWeight="black" fontSize={["3xl", "5xl"]} color="white">
               Lorem ipsum dolor sit amet sadipscing elitr sed
             </Heading>
-
             <Text fontSize={["sm", "lg"]} color="gray.500" fontWeight="bold" textTransform="uppercase" letterSpacing="0.2em">
               E-Book
             </Text>
-
             <Box mt={3}>
               <Link href="#" isExternal _hover={{ textUnderline: "none" }}>
                 <Text
@@ -56,7 +54,7 @@ const Hero = () => {
           />
           <Box
             role="group"
-            p={8}
+            p={10}
             position="absolute"
             top="0px"
             left="0px"
@@ -93,7 +91,7 @@ const Hero = () => {
           p={6}
           overflow="hidden"
         >
-          <Container zIndex={100} maxWidth={["100%", "75%"]} ml={0}>
+          <Container zIndex={100} maxWidth={["100%", "75%"]} ml={[0]}>
             <Heading fontSize="xl" fontWeight="bold" color="white" lineHeight={1.5}>
               Lorem ipsum dolor sit amet consetetur sadipscing.
             </Heading>
@@ -130,7 +128,7 @@ const Hero = () => {
           />
           <Box
             role="group"
-            p={8}
+            p={10}
             position="absolute"
             top="0px"
             left="0px"
@@ -147,7 +145,7 @@ const Hero = () => {
               opacity: "1",
             }}
           >
-            <Text fontSize={["sm"]} fontWeight="bold" letterSpacing="0.15em" lineHeight={"1.8"} noOfLines={2} _groupHover={{ color: "gray.300" }}>
+            <Text fontSize={["sm"]} fontWeight="bold" letterSpacing="0.15em" lineHeight={"1.8"} noOfLines={3} _groupHover={{ color: "gray.300" }}>
               Description of asset goes here. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
               dolore magna aliquyam erat, sed diam voluptua.
             </Text>
@@ -166,7 +164,7 @@ const Hero = () => {
           p={6}
           overflow="hidden"
         >
-          <Container zIndex={100} maxWidth={["100%", "75%"]} ml={0}>
+          <Container zIndex={100} maxWidth={["100%", "75%"]} ml={[0]}>
             <Heading fontSize="xl" fontWeight="bold" color="white" lineHeight={1.5}>
               Lorem ipsum dolor sit amet consetetur sadipscing.
             </Heading>
@@ -203,7 +201,7 @@ const Hero = () => {
           />
           <Box
             role="group"
-            p={8}
+            p={10}
             position="absolute"
             top="0px"
             left="0px"
@@ -220,7 +218,7 @@ const Hero = () => {
               opacity: "1",
             }}
           >
-            <Text fontSize={["sm"]} fontWeight="bold" letterSpacing="0.15em" lineHeight={"1.8"} noOfLines={2} _groupHover={{ color: "gray.300" }}>
+            <Text fontSize={["sm"]} fontWeight="bold" letterSpacing="0.15em" lineHeight={"1.8"} noOfLines={3} _groupHover={{ color: "gray.300" }}>
               Description of asset goes here. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut.
             </Text>
           </Box>
